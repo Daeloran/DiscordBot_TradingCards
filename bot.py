@@ -1,21 +1,38 @@
 import discord
 from discord.ext import commands
-#from discord import app_commands
+from discord import app_commands
 from cards import Card, available_cards, User
 
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='/',intents=intents)
-
+"""
 @bot.event
 async def on_ready():
     print('Bot is ready!')
+"""
+
+class aclient(discord.Client):
+    def __init__(self):
+        super().__init__(intents = discord.Intents.default())
+        self.synced = False #we use this so the bot doesn't sync commands more than once
+
+    async def on_ready(self):
+        await self.wait_until_ready()
+        if not self.synced: #check if slash commands have been synced 
+            await tree.sync(guild = discord.Object(id=1122893178278785175)) #guild specific: leave blank if global (global registration can take 1-24 hours)
+            self.synced = True
+        print(f"We have logged in as {self.user}.")
+
+client = aclient()
+tree = app_commands.CommandTree(client)
 
 users = {}  # Dictionnaire pour stocker les informations des utilisateurs
 cards_available = {}  # Dictionnaire pour stocker les cartes disponibles
 
-@bot.command()
-async def help_trade(ctx):
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'help_trade', description='Liste des commandes disponibles')
+#async def help_trade(ctx):
+async def slash2(interaction: discord.Interaction):
     embed = discord.Embed(title="Liste des commandes", description="Voici une liste des commandes que vous pouvez utiliser :", color=discord.Color.blue())
     embed.add_field(name="/show_available_cards", value="Afficher toutes les cartes disponibles.", inline=False)
     embed.add_field(name="/show_selected_cards [card_identifiers]", value="Afficher les cartes spécifiées par leurs identifiants.", inline=False)
@@ -23,36 +40,47 @@ async def help_trade(ctx):
     embed.add_field(name="/search_card_for_trade [card_identifier] [trade_cards]", value="Rechercher une carte à échanger contre d'autres cartes.", inline=False)
     embed.add_field(name="/trade_cards [trade_cards]", value="Proposer des cartes en échange.", inline=False)
     embed.add_field(name="/show_trades [cards]", value="Afficher les échanges en cours pour des cartes spécifiées.", inline=False)
-    await ctx.send(embed=embed)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
-# Commande pour afficher les cartes existantes
-@bot.command()
-async def show_available_cards(ctx):
-    for card in available_cards:
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'show_available_cards', description='Liste l\'ensemble des cartes')
+async def slash2(interaction: discord.Interaction):
+    # Répond à l'interaction avec le premier message
+    first_card = available_cards[0]
+    embed = discord.Embed(title=first_card.name, description=first_card.rarity, color=discord.Color.blue())
+    embed.set_image(url=first_card.image_url)
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    # Envoie des messages de suivi avec les cartes restantes
+    for card in available_cards[1:]:
         embed = discord.Embed(title=card.name, description=card.rarity, color=discord.Color.blue())
         embed.set_image(url=card.image_url)
-        await ctx.send(embed=embed)
+        await interaction.followup.send(embed=embed, ephemeral=True)
 
-@bot.command()
-async def show_selected_cards(ctx, *card_identifiers):
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'show_selected_cards', description='Permet d\'afficher une ou plusieurs cartes particulière')
+async def show_selected_cards(interaction: discord.Interaction, card_identifiers: str):
     if not card_identifiers:
-        await ctx.send("Veuillez spécifier au moins une carte.")
+        await interaction.response.send_message("Veuillez spécifier au moins une carte.", ephemeral=True)
         return
+
+    card_identifiers = [card_identifier.strip() for card_identifier in card_identifiers.split(',')]
+
 
     cards_info = []
     for card_identifier in card_identifiers:
+        card_identifier = card_identifier.strip()  # remove leading/trailing white spaces
         card_info = get_card_information(card_identifier)
         if card_info:
             cards_info.append(card_info)
 
     if cards_info:
+        await interaction.response.send_message("Voici les informations de vos cartes :")  # initial response
         for card in cards_info:
             embed = discord.Embed(title=card.name, description=card.rarity, color=discord.Color.blue())
             embed.set_image(url=card.image_url)
-            await ctx.send(embed=embed)
+            await interaction.followup.send(embed=embed, ephemeral=True)  # follow-up messages for each card
     else:
-        await ctx.send("Aucune carte trouvée.")
+        await interaction.response.send_message("Aucune carte trouvée.", ephemeral=True)
 
 
 # Fonction pour obtenir les informations de la carte en fonction de son identifiant
@@ -62,7 +90,46 @@ def get_card_information(card_identifier):
             return card
     return None
 
-@bot.command()
+@tree.command(guild=discord.Object(id=1122893178278785175), name='search_card', description='Permet de signaler que vous recherchez une carte')
+async def search_card(interaction: discord.Interaction, card_identifiers: str):
+    user = users.get(interaction.user.id)
+    if user is None:
+        user = User(interaction.user.name)
+        users[interaction.user.id] = user
+
+    card_identifiers = [identifier.strip() for identifier in card_identifiers.split(',')]
+
+    for card_identifier in card_identifiers:
+        for card in available_cards:
+            if card.card_number == card_identifier or (card.name + " " + card.rarity) == card_identifier:
+                if any(card_identifier == search[0].card_number for search in user.searches):
+                    await interaction.response.send_message("Tu recherches déjà la carte " + card_identifier)
+                    continue
+
+                user.searches.append((card, []))
+                embed = discord.Embed(title=card.name, description=card.rarity, color=discord.Color.blue())
+                embed.set_image(url=card.image_url)
+                await interaction.response.send_message(f"{interaction.user.mention} recherche la carte '{card.name}' ({card.rarity}).", embed=embed)
+
+                # Envoi de messages supplémentaires avec les autres cartes recherchées
+                additional_messages = []
+                for search_card, search_messages in user.searches:
+                    if search_card != card:  # Exclure la carte actuelle
+                        additional_messages.append(f"Carte recherchée : {search_card.name} ({search_card.rarity})")
+                        additional_messages.extend(search_messages)
+
+                if additional_messages:
+                    additional_messages_text = "\n".join(additional_messages)
+                    await interaction.followup.send(additional_messages_text)
+
+                break
+        else:
+            await interaction.response.send_message("La carte spécifiée n'existe pas.")
+
+
+
+"""
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'search_card', description='Permet de signaler que vous rechercher une carte')
 async def search_card(ctx, card_identifier):
     user = users.get(ctx.author.id)
     if user is None:
@@ -83,7 +150,7 @@ async def search_card(ctx, card_identifier):
 
     await ctx.send("La carte spécifiée n'existe pas.")
 
-@bot.command()
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'search_card_for_trade', description='Permet de signaler que vous recherchez une cartes en échanges d\'une carte particulière')
 async def search_card_for_trade(ctx, card_identifier, *trade_cards):
     user = users.get(ctx.author.id)
     if user is None:
@@ -114,7 +181,7 @@ async def search_card_for_trade(ctx, card_identifier, *trade_cards):
 
 
 # 
-@bot.command()
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'trade_cards', description='Permet de signaler que vous avez une ou des cartes à échanger')
 async def trade_cards(ctx, *trade_cards):
     user = users.get(ctx.author.id)
     if user is None:
@@ -134,7 +201,7 @@ async def trade_cards(ctx, *trade_cards):
         embed.add_field(name=card.name, value=card.rarity, inline=False)
     await ctx.send(f"{ctx.author.mention} propose en échange :", embed=embed)
 
-@bot.command()
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'show_trades', description='Affiche les propositions de cartes en cours')
 async def show_trades(ctx, *cards):
     if cards:
         # Cas où des cartes sont spécifiées
@@ -170,7 +237,7 @@ async def show_trades(ctx, *cards):
             await ctx.send("Il n'y a pas d'échanges en cours.")
 
 # Commande "reset" pour réinitialiser les recherches et échanges de l'utilisateur
-@bot.command()
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'reset', description='Réinitialiser les recherches et échanges de l\'utilisateur')
 async def reset(ctx):
     user = users.get(ctx.author.id)
     if user is None:
@@ -182,7 +249,7 @@ async def reset(ctx):
 
 # Commande "remove_card" pour supprimer une ou plusieurs cartes spécifiques des recherches/échanges de l'utilisateur
 # ATTENTION: SEUL UNE CARTE EST MENTIONNEE DANS LE TEXTE DE RETOUR SI L'ON MET PLUSIEURS CARTES DANS LA COMMANDE
-@bot.command()
+@tree.command(guild = discord.Object(id=1122893178278785175), name = 'remove_card', description='Supprime une ou plusieurs cartes spécifiques des recherches/échanges de l\'utilisateur')
 async def remove_card(ctx, *card_identifiers):
     user = users.get(ctx.author.id)
     if user is None:
@@ -214,6 +281,7 @@ async def remove_card(ctx, *card_identifiers):
         await ctx.send(f"Les cartes suivantes ont été supprimées : {', '.join(removed_cards)}")
     else:
         await ctx.send("Aucune carte correspondante n'a été trouvée dans vos recherches ou échanges.")
+"""
 
-
-bot.run('MTEyMjg5MTU0OTk0NTExNDc3NA.GU0nXT.tvLNPo1oBWWtvcgtetjY7MWJVdWYx6x8d-d530')
+#bot.run('MTEyMjg5MTU0OTk0NTExNDc3NA.GU0nXT.tvLNPo1oBWWtvcgtetjY7MWJVdWYx6x8d-d530')
+client.run('MTEyMjg5MTU0OTk0NTExNDc3NA.GU0nXT.tvLNPo1oBWWtvcgtetjY7MWJVdWYx6x8d-d530')
