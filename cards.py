@@ -10,6 +10,9 @@ class User:
         self.username = username
         self.searches = []  # Liste des recherches en cours de l'utilisateur (contenant des tuples (numéro de carte, nom de carte, rareté))
         self.trades = []  # Liste des échanges en cours de l'utilisateur (contenant des tuples (numéro de carte, nom de carte, rareté))
+    def reset(self):
+        self.searches = []
+        self.trades = []
 
 available_cards = [
     Card("LDD-F003", "Magicien Sombre", "Ultra Rare", "http://www.ultrajeux.com/images/yugioh/scan/maxi/fr/ldd-f/ldd-f003.jpg"),

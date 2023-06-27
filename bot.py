@@ -1,14 +1,11 @@
 import discord
 from discord.ext import commands
-
+#from discord import app_commands
 from cards import Card, available_cards, User
 
 
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='/',intents=intents)
-
-
-#IDEES : commande pour afficher une carte en particulier
 
 @bot.event
 async def on_ready():
@@ -16,6 +13,17 @@ async def on_ready():
 
 users = {}  # Dictionnaire pour stocker les informations des utilisateurs
 cards_available = {}  # Dictionnaire pour stocker les cartes disponibles
+
+@bot.command()
+async def help_trade(ctx):
+    embed = discord.Embed(title="Liste des commandes", description="Voici une liste des commandes que vous pouvez utiliser :", color=discord.Color.blue())
+    embed.add_field(name="/show_available_cards", value="Afficher toutes les cartes disponibles.", inline=False)
+    embed.add_field(name="/show_selected_cards [card_identifiers]", value="Afficher les cartes spécifiées par leurs identifiants.", inline=False)
+    embed.add_field(name="/search_card [card_identifier]", value="Rechercher une carte spécifique par son identifiant.", inline=False)
+    embed.add_field(name="/search_card_for_trade [card_identifier] [trade_cards]", value="Rechercher une carte à échanger contre d'autres cartes.", inline=False)
+    embed.add_field(name="/trade_cards [trade_cards]", value="Proposer des cartes en échange.", inline=False)
+    embed.add_field(name="/show_trades [cards]", value="Afficher les échanges en cours pour des cartes spécifiées.", inline=False)
+    await ctx.send(embed=embed)
 
 
 # Commande pour afficher les cartes existantes
@@ -160,6 +168,52 @@ async def show_trades(ctx, *cards):
             await ctx.send("\n".join(trades))
         else:
             await ctx.send("Il n'y a pas d'échanges en cours.")
+
+# Commande "reset" pour réinitialiser les recherches et échanges de l'utilisateur
+@bot.command()
+async def reset(ctx):
+    user = users.get(ctx.author.id)
+    if user is None:
+        await ctx.send("Vous n'avez pas encore d'informations d'utilisateur enregistrées.")
+        return
+
+    user.reset()
+    await ctx.send("Vos recherches et échanges ont été réinitialisés avec succès.")
+
+# Commande "remove_card" pour supprimer une ou plusieurs cartes spécifiques des recherches/échanges de l'utilisateur
+# ATTENTION: SEUL UNE CARTE EST MENTIONNEE DANS LE TEXTE DE RETOUR SI L'ON MET PLUSIEURS CARTES DANS LA COMMANDE
+@bot.command()
+async def remove_card(ctx, *card_identifiers):
+    user = users.get(ctx.author.id)
+    if user is None:
+        await ctx.send("Vous n'avez pas encore d'informations d'utilisateur enregistrées.")
+        return
+
+    if not card_identifiers:
+        await ctx.send("Veuillez spécifier les identifiants des cartes à supprimer.")
+        return
+
+    removed_cards = []
+    for card_identifier in card_identifiers:
+        # Supprimer les cartes correspondantes des recherches de l'utilisateur
+        removed_searches = [search for search in user.searches if search[0].card_number == card_identifier or (search[0].name + " " + search[0].rarity) == card_identifier]
+        user.searches = [search for search in user.searches if search not in removed_searches]
+
+        # Supprimer les cartes correspondantes des échanges de l'utilisateur
+        removed_trades = [trade for trade in user.trades if trade == card_identifier or any((card.card_number == trade or (card.name + " " + card.rarity) == trade) for card in available_cards)]
+        user.trades = [trade for trade in user.trades if trade not in removed_trades]
+
+        for search in removed_searches:
+            removed_cards.append(search[0].name)
+
+        card_info = next((card for card in available_cards if card.card_number == card_identifier or (card.name + " " + card.rarity) == card_identifier), None)
+        if card_info and card_info.name not in removed_cards:
+            removed_cards.append(card_info.name)
+
+    if removed_cards:
+        await ctx.send(f"Les cartes suivantes ont été supprimées : {', '.join(removed_cards)}")
+    else:
+        await ctx.send("Aucune carte correspondante n'a été trouvée dans vos recherches ou échanges.")
 
 
 bot.run('MTEyMjg5MTU0OTk0NTExNDc3NA.GU0nXT.tvLNPo1oBWWtvcgtetjY7MWJVdWYx6x8d-d530')
