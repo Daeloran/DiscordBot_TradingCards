@@ -1,0 +1,20 @@
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ef326e81c00136084f0f05352fad14cb).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_available_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 02bd2a5c3d3c37508921ae549e3b27ad).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_selected_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d2e7b9606259118ba69df4ff181c7597).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /search_card a été exécutée.

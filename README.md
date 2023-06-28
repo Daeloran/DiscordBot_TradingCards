@@ -57,18 +57,31 @@ ou
 /show_trades <id_carte1> <id_carte2> ...
 ```
 
+### /reset
+Réinitialise les recherches et échanges de l'utilisateur.
+
+Utilisation :
+```
+/reset
+```
+
+### /remove_card
+Supprime une ou plusieurs cartes des recherches/échanges de l'utilisateur.
+
+Utilisation :
+```
+/remove_card <id_carte1> <id_carte2> ...
+```
+
 ## Configuration du bot
 Avant d'exécuter le bot, assurez-vous d'avoir configuré le jeton d'authentification. Vous devez fournir un jeton valide pour que le bot puisse fonctionner correctement.
 
 Pour configurer le jeton d'authentification, modifiez la ligne suivante dans le script :
-
+```
 bot.run('VOTRE_JETON')
+```
+
 Remplacez VOTRE_JETON par le jeton d'authentification de votre bot Discord.
 
 ## Remarque
 Ce README fournit une brève description des commandes disponibles et de leur utilisation. Vous pouvez personnaliser davantage le README en ajoutant des informations supplémentaires sur la configuration, les dépendances, etc., en fonction des besoins de votre projet.
-
-N'oubliez pas de fournir des instructions claires et concises pour que les utilisateurs puissent utiliser le bot correctement.
-
-C'est tout ! Maintenant, vous pouvez utiliser ce README comme guide pour aider les utilisateurs à comprendre et à utiliser votre bot Discord.
-
