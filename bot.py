@@ -1,8 +1,5 @@
 # bot.py
 
-####### IDEE : EVALUER LES ECHANGES ET LES PERSONNES
-####### IDEE : PERMETTRE A CERTAINS ROLE D'ACCEDER A DES ECHANGES PLUS TOT QUE D'AUTRES
-
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -426,6 +423,98 @@ async def remove_card(interaction: discord.Interaction, card_identifiers: str):
         logging.error("La commande /remove_card a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
+
+# Commande pour afficher le profil utilisateur (recherches et échanges)
+@tree.command(guild=discord.Object(id=SERVER_ID), name='profile', description='Affiche votre profil utilisateur')
+async def profile(interaction: discord.Interaction):
+    try:
+        logging.info("La commande /profile a été exécutée.")
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        user = users.get(str(interaction.user.id))
+        if user is None:
+            await interaction.response.send_message("Votre profil utilisateur n'existe pas.", ephemeral=True)
+            return
+
+        embed = discord.Embed(title="Profil utilisateur", color=discord.Color.blue())
+        embed.add_field(name="Utilisateur", value=interaction.user.name, inline=False)
+        #embed.add_field(name="Score", value=user.score, inline=False)
+
+        if user.searches:
+            searches_list = [f"{card.name} ({card.rarity})" for card in user.searches]
+            embed.add_field(name="Recherches en cours", value="\n".join(searches_list), inline=False)
+        else:
+            embed.add_field(name="Recherches en cours", value="Aucune recherche en cours", inline=False)
+
+        if user.trades:
+            trades_list = [f"{card.name} ({card.rarity})" for card in user.trades]
+            embed.add_field(name="Cartes proposées en échange", value="\n".join(trades_list), inline=False)
+        else:
+            embed.add_field(name="Cartes proposées en échange", value="Aucune carte proposée en échange", inline=False)
+
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+    except Exception as e:
+        logging.error("La commande /profile a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
+"""
+@tree.command(guild=discord.Object(id=SERVER_ID), name='leaderboard', description='Affiche le classement des utilisateurs')
+async def leaderboard(interaction: discord.Interaction):
+    try:
+        logging.info("La commande /leaderboard a été exécutée.")
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        sorted_users = sorted(users.values(), key=lambda user: user.score, reverse=True)
+
+        embed = discord.Embed(title="Classement des utilisateurs", color=discord.Color.blue())
+        rank = 1
+        for user in sorted_users:
+            embed.add_field(name=f"#{rank} - {user.username}", value=f"Score : {user.score}", inline=False)
+            rank += 1
+
+        await interaction.response.send_message(embed=embed)
+    except Exception as e:
+        logging.error("La commande /leaderboard a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+"""
+
+# Commande pour afficher les statistiques d'échange et de recherche en cours
+@tree.command(guild=discord.Object(id=SERVER_ID), name='stats', description='Affiche les statistiques du bot')
+async def stats(interaction: discord.Interaction):
+    try:
+        logging.info("La commande /stats a été exécutée.")
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        total_searches = sum(len(user.searches) for user in users.values())
+        total_trades = sum(len(user.trades) for user in users.values())
+
+        embed = discord.Embed(title="Statistiques du bot", color=discord.Color.blue())
+        embed.add_field(name="Nombre de recherches en cours", value=total_searches, inline=False)
+        embed.add_field(name="Nombre d'échanges en cours", value=total_trades, inline=False)
+
+        await interaction.response.send_message(embed=embed)
+    except Exception as e:
+        logging.error("La commande /stats a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
+
+# Commande pour supprimer le profil utilisateur
+@tree.command(guild=discord.Object(id=SERVER_ID), name='delete_profile', description='Supprime votre profil utilisateur')
+async def delete_profile(interaction: discord.Interaction):
+    try:
+        logging.info("La commande /delete_profile a été exécutée.")
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        user_id = str(interaction.user.id)
+        if user_id in users:
+            del users[user_id]
+            save_users(users)
+            await interaction.response.send_message("Votre profil utilisateur a été supprimé avec succès.", ephemeral=True)
+        else:
+            await interaction.response.send_message("Votre profil utilisateur n'existe pas.", ephemeral=True)
+    except Exception as e:
+        logging.error("La commande /delete_profile a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
 
 # Connecte le bot au serveur
