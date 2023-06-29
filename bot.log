@@ -1,0 +1,755 @@
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: bd74da97e83d4421207e9fd4fa95408a).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 331, in show_trades
+    card_info = next((card for card in available_cards if card.card_number == trade or card.name.lower() in trade.lower()), None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 331, in <genexpr>
+    card_info = next((card for card in available_cards if card.card_number == trade or card.name.lower() in trade.lower()), None)
+                                                                                                            ^^^^^^^^^^^
+AttributeError: 'Card' object has no attribute 'lower'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ad17b39ed82060440668c924730f34f5).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 02e6c355dcd80563cfb3ddd3f0275cc3).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d41dadf7701a2f45206ac7b7e5fc6a18).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3a9135624b2daad0aaf7c80ca8bf06e8).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: c28668c03ac7a65f3e8b3a95ec6cfc42).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    trades.append(f"{user.username} propose : {card_info.name} ({card_info.rarity})")
+    ^^^^^^
+UnboundLocalError: cannot access local variable 'trades' where it is not associated with a value
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 6ce1ac71aca5c5c69b58318d113eab05).
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 8e89d4daf31df0a94cb3612f6286b7aa).
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    trades.append(f"{user.username} propose : {card_info.name} ({card_info.rarity})")
+    ^^^^^^
+UnboundLocalError: cannot access local variable 'trades' where it is not associated with a value
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    trades.append(f"{user.username} propose : {card_info.name} ({card_info.rarity})")
+    ^^^^^^
+UnboundLocalError: cannot access local variable 'trades' where it is not associated with a value
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 9fb36d094d67e5bb8419fb3fe0858bd0).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 8d2003f49ee6e6cf44ad86c6c0e5d461).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a1282f45ed51f678b5d942e6ad89a1f6).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 9af9c610ea6dec5414d7ba21ac25fdd7).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: b6575dee3a51b85bc201ac99ecc735a9).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 332, in show_trades
+    card_info = next((card for card in available_cards if card.card_number in trade or card.name.lower() in trade.lower()), None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 332, in <genexpr>
+    card_info = next((card for card in available_cards if card.card_number in trade or card.name.lower() in trade.lower()), None)
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: argument of type 'Card' is not iterable
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 332, in show_trades
+    card_info = next((card for card in available_cards if card.card_number in trade or card.name.lower() in trade.lower()), None)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 332, in <genexpr>
+    card_info = next((card for card in available_cards if card.card_number in trade or card.name.lower() in trade.lower()), None)
+                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: argument of type 'Card' is not iterable
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4fa5f606556ecff7b9504d4fb4c19ed8).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f05cee891fb5b46b5d0e8ffcd9478636).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0b3b9b7d81f9c614cd348a72f825f1a1).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: e357e3e810d76f2ead3e90a520f0b0be).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in show_trades
+    if card_info and any((card.lower() == trade.lower() or str(card.card_number) == trade) or (isinstance(card_info, Card) and (card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower())) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in <genexpr>
+    if card_info and any((card.lower() == trade.lower() or str(card.card_number) == trade) or (isinstance(card_info, Card) and (card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower())) for card in cards):
+                                                               ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d96091a2d083159c303cca94f634aebc).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in show_trades
+    if card_info and any((card.lower() == trade.lower() or card.card_number == trade) or (isinstance(card_info, Card) and (card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower())) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in <genexpr>
+    if card_info and any((card.lower() == trade.lower() or card.card_number == trade) or (isinstance(card_info, Card) and (card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower())) for card in cards):
+                                                           ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 48d2eb80c8627ddd84abc3aa335cf827).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in show_trades
+    if card_info and any((card.lower() == trade.lower() or str(card.card_number) == trade or (card_info.name + " " + card_info.rarity).lower() == trade.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in <genexpr>
+    if card_info and any((card.lower() == trade.lower() or str(card.card_number) == trade or (card_info.name + " " + card_info.rarity).lower() == trade.lower()) for card in cards):
+                                                               ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 458c8ab69c70b8e7e8f6e547b1c31ab4).
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number == trade or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number == trade or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d28e246270bdc2974a9920a8c675295e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 334, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: e3cb531fe2de1470f2c1614dd7c4fff9).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3911ce5c5462373eaabecd337dfd2da3).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 337, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 337, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f0c42f7a00c415255e84fc1b1147658d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 718a066ac936aa06a9df1ace509d7f9d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: e4decc2bbdee008a1e90d36a45f41541).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 337, in show_trades
+    print(card_info+" pas insi")
+          ~~~~~~~~~^~~~~~~~~~~~
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 27c6a119f58997208ed6c45546d4778b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 2015e2e2dcc9feae018afdcbef4e1b6c).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 030452c284bbaf0ee24ec68d3eafb9c5).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 213, in search_card
+    save_users(users)  # Enregistrer les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d71d727428bf9d8429ec3bea7535b339).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 198, in search_card
+    for card, _ in available_cards:
+        ^^^^^^^
+TypeError: cannot unpack non-iterable Card object
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 6aed21d48c24affd7f143278a468acea).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 220, in search_card
+    save_users(users)  # Sauvegarder les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+ERROR:discord.app_commands.tree:Ignoring exception in command 'search_card'
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 220, in search_card
+    save_users(users)  # Sauvegarder les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 828, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 223, in search_card
+    await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\interactions.py", line 774, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\tree.py", line 1248, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 853, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 846, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'search_card' raised an exception: InteractionResponded: This interaction has already been responded to before
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: dfe494f970932f8f01f750d509452c84).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 220, in search_card
+    save_users(users)  # Sauvegarder les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+ERROR:discord.app_commands.tree:Ignoring exception in command 'search_card'
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 220, in search_card
+    save_users(users)  # Sauvegarder les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 828, in _do_call
+    return await self._callback(interaction, **params)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 223, in search_card
+    await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\interactions.py", line 774, in send_message
+    raise InteractionResponded(self._parent)
+discord.errors.InteractionResponded: This interaction has already been responded to before
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\tree.py", line 1248, in _call
+    await command._invoke_with_namespace(interaction, namespace)
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 853, in _invoke_with_namespace
+    return await self._do_call(interaction, transformed_values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\app_commands\commands.py", line 846, in _do_call
+    raise CommandInvokeError(self, e) from e
+discord.app_commands.errors.CommandInvokeError: Command 'search_card' raised an exception: InteractionResponded: This interaction has already been responded to before
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a913be23fa6be59125fac759cd22243f).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 8c1efafafe7528457cfe718dbc8bb811).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 214, in search_card
+    save_users(users)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: dde431f9b912c476ead7a0ef18722a3d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 82a3ca0b6c4f8f99db94885ddb9ef34e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 202, in search_card
+    if any(card_identifier == search.card.card_number for search in user.searches):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 202, in <genexpr>
+    if any(card_identifier == search.card.card_number for search in user.searches):
+                              ^^^^^^^^^^^
+AttributeError: 'Card' object has no attribute 'card'
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f784dda9dca92831174d7b51f5a9732e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4f9d56d7f098e99e31a64e5b1fc8ba3a).
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4932c49a2a8cf8642a814ebfd8692654).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card_for_trade a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 262, in search_card_for_trade
+    save_users(users)  # Enregistrer les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: eb3e434498cfde75b20b628d9a53d678).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card_for_trade a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 262, in search_card_for_trade
+    save_users(users)  # Enregistrer les utilisateurs dans le fichier JSON
+    ^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in save_users
+    "searches": [card.card_number for card in user.searches],
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in <listcomp>
+    "searches": [card.card_number for card in user.searches],
+                 ^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0459b8b26ef19165e06f0200deb98e25).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 31b435de75d5a9bc1cab8b53cd94791d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: cd6f07437865ce28fa7c6182447e4ffd).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+ERROR:root:La commande /search_card_for_trade a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 242, in search_card_for_trade
+    if card.card_number == trade_card or (card.name.lower() + " " + card.rarity.lower()) == trade_card.lower():
+                           ^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'trade_card' where it is not associated with a value
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 06f5749c69263ccd8a7805125452eb86).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 708edae11c0a2643e10179ccccbbc04c).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d811e8efa3f8bffce0aa7cb0c90b0166).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3f933d98127ad878502d70b15bdd118e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: dc179fad7f44f58c78aa22d4ba7e14ef).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 6e1ee0ccab9e65976eeca549892d1560).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d9d775ea36f6d7346db2e20451d7d332).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f475b556f730ea29d8f61a75086e8dc8).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a637607a798dac4c9ea89d9a4645198e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+INFO:root:La commande /show_trades a été exécutée.
+ERROR:root:La commande /show_trades a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in show_trades
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 333, in <genexpr>
+    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
+                                                          ^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'card_number'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d1fb87557b650aa59e5ad03db93e62f2).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4f1d5c889d6ca6fd3c0cb7eac36a6288).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 427ff5e4789ff1d2031f87b8b8e6ee6b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: e35249ba5494bf852e70a449e19dd353).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 34cbead034474d8290774fc869462b0c).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 6a9d0e576bc38e43be4868c171e65d40).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 42e538e3963d1a73601fd5be179d20de).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: caeb2d3dcee0fcb0ba72f69f240d74fd).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: b2e871747015a72ae2c1b4c28234e534).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ee8ac4aaabf9c9c03e57e4d8f0c2880a).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /remove_card a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+INFO:root:La commande /show_selected_cards a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3960664c114713610bd902259e4dada2).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+INFO:root:La commande /remove_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0e08f05db04c918233bdf68804b4a42d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 7b4f2973543b07ea5c4088777cc7975b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 99704e126e8a293023a16dce2023fce1).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /reset a été exécutée.
