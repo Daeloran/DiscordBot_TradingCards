@@ -2,7 +2,6 @@
 
 ####### IDEE : EVALUER LES ECHANGES ET LES PERSONNES
 ####### IDEE : PERMETTRE A CERTAINS ROLE D'ACCEDER A DES ECHANGES PLUS TOT QUE D'AUTRES
-####### IDEE : DEPORTER L'ID DU SERVEUR ET LE TOKEN DANS UN AUTRE FICHIER
 
 import discord
 from discord.ext import commands
@@ -11,6 +10,53 @@ import logging
 
 from cards import Card, available_cards, User
 from config import COMMAND_PREFIX, SERVER_ID, TOKEN
+
+import json
+import os
+
+USERS_FILE = 'user_data.json'
+
+def save_users(users):
+    with open('users.json', 'w') as file:
+        users_data = {}
+        for user_id, user in users.items():
+            users_data[user_id] = {
+                "username": user.username,
+                "searches": [card.card_number for card in user.searches],
+                "trades": [card.card_number for card in user.trades]
+            }
+        json.dump(users_data, file)
+
+
+def load_users():
+    if not os.path.exists('users.json') or os.stat('users.json').st_size == 0:
+        return {}
+    with open('users.json', 'r') as file:
+        users_data = json.load(file)
+    users = {}
+    for user_id, user_data in users_data.items():
+        user = User(user_data["username"])
+        user.trades = [find_card_by_number(card_number) for card_number in user_data["trades"]]
+        user.searches = [find_card_by_number(card_number) for card_number in user_data["searches"]]
+        users[user_id] = user
+    return users
+
+
+def find_card_by_number(card_number):
+    for card in available_cards:
+        if card.card_number == card_number:
+            return card
+    return None  # or raise an exception if a card with the given number doesn't exist
+
+
+
+def get_or_create_user(users: dict, user_id: str, username: str) -> User:
+    user = users.get(user_id)
+    if user is None:
+        user = User(username)
+        users[user_id] = user
+    return user
+
 
 # Configuration de la journalisation vers un fichier
 logging.basicConfig(filename='bot.log', level=logging.INFO)
@@ -139,10 +185,10 @@ def get_card_information(card_identifier):
 async def search_card(interaction: discord.Interaction, card_identifiers: str):
     try:
         logging.info("La commande /search_card a été exécutée.")
-        user = users.get(interaction.user.id)
-        if user is None:
-            user = User(interaction.user.name)
-            users[interaction.user.id] = user
+        
+        users = load_users()
+
+        user = get_or_create_user(users, str(interaction.user.id), interaction.user.name)
 
         card_identifiers = [identifier.strip() for identifier in card_identifiers.split(',')]
 
@@ -151,26 +197,26 @@ async def search_card(interaction: discord.Interaction, card_identifiers: str):
             card_found = False
 
             for card in available_cards:
-                if card.card_number == card_identifier or (card.name + " " + card.rarity) == card_identifier:
-                    if any(card_identifier == search[0].card_number for search in user.searches):
+                if card.card_number == card_identifier.strip().lower() or (card.name.strip().lower() + " " + card.rarity.strip().lower()) == card_identifier.strip().lower():
+                    if any(card_identifier == search.card_number for search in user.searches):
                         await interaction.response.send_message("Tu recherches déjà la carte " + card_identifier, ephemeral=True)
                         card_found = True
                         break
 
-                    user.searches.append((card, []))
+                    user.searches.append(card)
                     cards_info.append(card)
                     card_found = True
 
             if not card_found:
                 await interaction.response.send_message(f"La carte spécifiée '{card_identifier}' n'existe pas.", ephemeral=True)
 
+        save_users(users)
+
         if cards_info:
             embed = discord.Embed(title="Cartes recherchées", color=discord.Color.blue())
             for card in cards_info:
                 embed.add_field(name=card.name, value=card.rarity, inline=False)
-                #embed.set_image(url=card.image_url)
-
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            await interaction.response.send_message(f"{interaction.user.mention} recherche :", embed=embed)
     except Exception as e:
         logging.error("La commande /search_card a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
@@ -181,19 +227,19 @@ async def search_card(interaction: discord.Interaction, card_identifiers: str):
 async def search_card_for_trade(interaction: discord.Interaction, card_to_search: str, trade_all_cards: bool, trade_cards: str):
     try:
         logging.info("La commande /search_card a été exécutée.")
-        user = users.get(interaction.user.id)
-        if user is None:
-            user = User(interaction.user.name)
-            users[interaction.user.id] = user
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
 
-        card_to_search = card_to_search.strip()
+        user = get_or_create_user(users, str(interaction.user.id), interaction.user.name)
+
+        card_to_search = card_to_search.strip().lower()
+
         trade_cards = [card.strip() for card in trade_cards.split(',')]
 
         main_card = None
         trade_cards_list = []
 
         for card in available_cards:
-            if card.card_number == card_to_search or (card.name + " " + card.rarity) == card_to_search:
+            if card.card_number == card_to_search or (card.name + " " + card.rarity).lower() == card_to_search.lower():
                 main_card = card
                 break
 
@@ -203,7 +249,7 @@ async def search_card_for_trade(interaction: discord.Interaction, card_to_search
 
         for trade_card in trade_cards:
             for card in available_cards:
-                if card.card_number == trade_card or (card.name + " " + card.rarity) == trade_card:
+                if card.card_number == trade_card.strip().lower() or (card.name.strip().lower() + " " + card.rarity.strip().lower()) == trade_card.strip().lower():
                     trade_cards_list.append(card)
                     break
 
@@ -211,16 +257,15 @@ async def search_card_for_trade(interaction: discord.Interaction, card_to_search
             await interaction.response.send_message("Veuillez spécifier une ou plusieurs cartes valides à échanger.", ephemeral=True)
             return
 
-        user.searches.append((main_card, trade_cards_list))
+        user.searches.append(main_card)
+        user.trades.extend(trade_cards_list)
+
+        save_users(users)  # Enregistrer les utilisateurs dans le fichier JSON
 
         embed = discord.Embed(title="Recherche de carte en échange", color=discord.Color.blue())
         embed.add_field(name="Carte recherchée", value=main_card.name, inline=False)
 
-        if trade_all_cards:
-            trade_description = "\n".join([card.name for card in trade_cards_list])
-        else:
-            trade_description = "\n".join([card.name for card in trade_cards_list])
-
+        trade_description = "\n".join([card.name for card in trade_cards_list])
         embed.add_field(name="Cartes proposées en échange", value=trade_description, inline=False)
 
         if trade_all_cards:
@@ -228,7 +273,7 @@ async def search_card_for_trade(interaction: discord.Interaction, card_to_search
         else:
             embed.add_field(name="Proposition", value="Une carte parmi les cartes affichées est proposée en échange.", inline=False)
 
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message(f"{interaction.user.mention} recherche :", embed=embed)
     except Exception as e:
         logging.error("La commande /search_card_for_trade a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
@@ -238,27 +283,27 @@ async def search_card_for_trade(interaction: discord.Interaction, card_to_search
 @tree.command(guild=discord.Object(id=SERVER_ID), name='trade_cards', description='Permet de signaler que vous avez une ou des cartes à échanger')
 async def trade_cards(interaction: discord.Interaction, trade_cards: str):
     try:
-        logging.info("La commande /search_card a été exécutée.")
-        user = users.get(interaction.user.id)
-        if user is None:
-            user = User(interaction.user.name)
-            users[interaction.user.id] = user
+        logging.info("La commande /trade_cards a été exécutée.")
+        
+        users = load_users()
+
+        user = get_or_create_user(users, str(interaction.user.id), interaction.user.name)
 
         trade_cards_list = [card.strip() for card in trade_cards.split(',')]
 
-        user.trades.extend(trade_cards_list)
-        valid_trade_cards = []
         for card_identifier in trade_cards_list:
-            card_info = next((card for card in available_cards if card.card_number == card_identifier or (card.name + " " + card.rarity) == card_identifier), None)
+            card_info = next((card for card in available_cards if card.card_number == card_identifier or (card.name + " " + card.rarity).lower() == card_identifier.lower()), None)
             if card_info:
-                valid_trade_cards.append(card_info)
+                user.trades.append(card_info)
 
-        if not valid_trade_cards:
+        save_users(users)
+
+        if not user.trades:
             await interaction.response.send_message("Veuillez spécifier une ou plusieurs cartes valides à échanger.", ephemeral=True)
             return
 
         embed = discord.Embed(title="Cartes proposées en échange", description="Voici les cartes que vous proposez en échange :", color=discord.Color.blue())
-        for card in valid_trade_cards:
+        for card in user.trades:
             embed.add_field(name=card.name, value=card.rarity, inline=False)
         await interaction.response.send_message(f"{interaction.user.mention} propose en échange :", embed=embed)
     except Exception as e:
@@ -266,12 +311,17 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
 
+
+## PROBLEME LA COMMANDE NE RENVOIE PAS DE RESULTAT LORSQU'ON SPECIFIE UNE CARTE PAR SON NUMERO
 # Commande pour afficher les échanges en cours
 @tree.command(guild=discord.Object(id=SERVER_ID), name='show_trades', description='Affiche les propositions de cartes en cours')
 async def show_trades(interaction: discord.Interaction, cards: str = ""):
     try:
         logging.info("La commande /show_trades a été exécutée.")
-        cards = [card.strip() for card in cards.split(",")]
+        if cards:
+            cards = [card.strip() for card in cards.split(",")]
+
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
 
         if cards:
             # Cas où des cartes sont spécifiées
@@ -279,7 +329,8 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
             for user in users.values():
                 for trade in user.trades:
                     card_info = next((card for card in available_cards if card.card_number == trade or card.name.lower() in trade.lower()), None)
-                    if card_info and any(card.lower() == trade.lower() or card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower() for card in cards):
+                    print(card_info)
+                    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
                         trades.append(f"{user.username} propose : {card_info.name} ({card_info.rarity})")
 
             if trades:
@@ -293,16 +344,13 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
             trades = []
             for user in users.values():
                 if user.trades:
-                    trade_list = []
                     for trade in user.trades:
-                        card_info = next((card for card in available_cards if card.card_number == trade), None)
+                        card_info = next((card for card in available_cards if str(card.card_number) == trade or card.name.lower() in trade.lower()), None)
                         if card_info:
-                            trade_list.append(f"{card_info.name} ({card_info.rarity})")
-                    if trade_list:
-                        trades.append(f"{user.username} propose : {', '.join(trade_list)}")
+                            trades.append(f"{user.username} propose : {card_info.name} ({card_info.rarity})")
 
             if trades:
-                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue()) ## PROBLEME ICI: TITRE DE EMBED = "Échanges concernant les cartes spécifiées" MEME SI AUCUNE CARTE SPECIFIEE
+                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
                 embed.description = "\n".join(trades)
                 await interaction.response.send_message(embed=embed, ephemeral=True)
             else:
@@ -314,59 +362,70 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
 
 # Commande pour réinitialiser les recherches et échanges de l'utilisateur
 @tree.command(guild=discord.Object(id=SERVER_ID), name='reset', description='Réinitialiser les recherches et échanges de l\'utilisateur')
-async def reset(interaction: discord.Interaction):
+async def reset(interaction: discord.Interaction, reset_searches: bool = False, reset_trades: bool = False):
     try:
         logging.info("La commande /reset a été exécutée.")
-        user = users.get(interaction.user.id)
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        user = users.get(str(interaction.user.id))
         if user is None or (not user.searches and not user.trades):
             await interaction.response.send_message("Vous n'avez pas encore d'informations d'utilisateur enregistrées.", ephemeral=True)
             return
 
-        user.reset()
-        await interaction.response.send_message("Vos recherches et échanges ont été réinitialisés avec succès.", ephemeral=True)
+        if reset_searches == False and reset_trades == False:
+            user.reset()
+            reset_message = "Vos recherches et échanges ont été réinitialisés avec succès."
+        elif reset_searches:
+            user.searches = []
+            reset_message = "Vos recherches ont été réinitialisées avec succès."
+        elif reset_trades:
+            user.trades = []
+            reset_message = "Vos échanges ont été réinitialisés avec succès."
+        else:
+            reset_message = "Aucune réinitialisation n'a été effectuée."
+
+        save_users(users)  # Enregistrer les utilisateurs dans le fichier JSON
+
+        await interaction.response.send_message(reset_message, ephemeral=True)
     except Exception as e:
         logging.error("La commande /reset a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
 
-# Commande pour supprimer une ou plusieurs cartes spécifiques des recherches/échanges de l'utilisateur
-## ATTENTION PROBLEME: LE MESSAGE DE REPONSE NE RENVOI PAS LE NOM DES CARTES MAIS SEULEUMENT LEUR ID
-@tree.command(guild=discord.Object(id=SERVER_ID), name='remove_card', description='Supprime une ou plusieurs cartes spécifiques des recherches/échanges de l\'utilisateur')
+@tree.command(guild=discord.Object(id=SERVER_ID), name='remove_card', description='Supprimer une ou plusieurs cartes de vos recherches/échanges')
 async def remove_card(interaction: discord.Interaction, card_identifiers: str):
     try:
-        logging.info("La commande /reset a été exécutée.")
-        user = users.get(interaction.user.id)
-        if user is None:
-            await interaction.response.send_message("Vous n'avez pas encore d'informations d'utilisateur enregistrées.")
+        logging.info("La commande /remove_card a été exécutée.")
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        user_id = str(interaction.user.id)
+        user = users.get(user_id)
+        if user is None or (not user.searches and not user.trades):
+            await interaction.response.send_message("Vous n'avez pas encore d'informations d'utilisateur enregistrées.", ephemeral=True)
             return
 
-        if not card_identifiers:
-            await interaction.response.send_message("Veuillez spécifier les identifiants des cartes à supprimer.")
-            return
+        card_identifiers = [card.strip() for card in card_identifiers.split(',')]
 
-        card_identifiers = [card.strip() for card in card_identifiers.split(",")]
+        removed_searches = []
+        removed_trades = []
 
-        removed_cards = []
         for card_identifier in card_identifiers:
-            # Supprimer les cartes correspondantes des recherches de l'utilisateur
-            removed_searches = [search for search in user.searches if search[0].card_number == card_identifier or (search[0].name + " " + search[0].rarity) == card_identifier]
-            for search in removed_searches:
-                user.searches.remove(search)
-                removed_cards.append(search[0].name)
+            removed_searches.extend([search for search in user.searches if search.card_number == card_identifier.strip().lower() or (search.name.strip().lower() + " " + search.rarity.strip().lower()) == card_identifier.strip().lower()])
+            removed_trades.extend([trade for trade in user.trades if trade.card_number == card_identifier.strip().lower() or (trade.name.strip().lower() + " " + trade.rarity.strip().lower()) == card_identifier.strip().lower()])
 
-            # Supprimer les cartes correspondantes des échanges de l'utilisateur
-            removed_trades = [trade for trade in user.trades if trade == card_identifier]
-            for trade in removed_trades:
-                user.trades.remove(trade)
-                removed_cards.append(trade)
+        user.searches = [search for search in user.searches if search not in removed_searches]
+        user.trades = [trade for trade in user.trades if trade not in removed_trades]
 
-        if removed_cards:
-            await interaction.response.send_message(f"Les cartes suivantes ont été supprimées : {', '.join(removed_cards)}", ephemeral=True)
+        save_users(users)  # Enregistrer les utilisateurs dans le fichier JSON
+
+        if removed_searches or removed_trades:
+            await interaction.response.send_message("Les cartes spécifiées ont été supprimées de vos recherches/échanges avec succès.", ephemeral=True)
         else:
-            await interaction.response.send_message("Aucune carte correspondante n'a été trouvée dans vos recherches ou échanges.", ephemeral=True)
+            await interaction.response.send_message("Aucune carte correspondante n'a été trouvée dans vos recherches/échanges.", ephemeral=True)
     except Exception as e:
         logging.error("La commande /remove_card a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
 
 
 # Connecte le bot au serveur

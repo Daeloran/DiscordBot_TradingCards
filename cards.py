@@ -7,11 +7,26 @@ class Card:
         self.rarity = rarity
         self.image_url = image_url
 
+
+    def to_dict(self):
+        return {
+            "card_number": self.card_number,
+            "name": self.name,
+            "rarity": self.rarity,
+            "image_url": self.image_url
+        }
+    
+    def lower(self):
+        return str(self).lower()
+
+    def __str__(self):
+        return self.name
+
 class User:
     def __init__(self, username):
         self.username = username
-        self.searches = []  # Liste des recherches en cours de l'utilisateur (contenant des tuples (numéro de carte, nom de carte, rareté))
-        self.trades = []  # Liste des échanges en cours de l'utilisateur (contenant des tuples (numéro de carte, nom de carte, rareté))
+        self.searches = []  # Liste des recherches en cours de l'utilisateur (contenant des objets Card)
+        self.trades = []  # Liste des échanges en cours de l'utilisateur (contenant des objets Card)
     
     def reset(self):
         self.searches = []
@@ -20,9 +35,17 @@ class User:
     def to_dict(self):
         return {
             "username": self.username,
-            "searches": self.searches,
-            "trades": self.trades
+            "searches": [card.to_dict() for card in self.searches],
+            "trades": [card.to_dict() for card in self.trades]
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        user = cls(data['username'])
+        user.searches = [Card(card_info['card_number'], card_info['name'], card_info['rarity'], card_info['image_url']) for card_info in data['searches']]
+        user.trades = [Card(card_info['card_number'], card_info['name'], card_info['rarity'], card_info['image_url']) for card_info in data['trades']]
+        return user
+
 
 available_cards = [
     Card("1", "NAVIRE PIRATE", "Terrain", "https://cdn.shopify.com/s/files/1/0683/2055/9412/files/Wankul_001_f52bd649-722f-456b-902c-ebad06087963.jpg?v=1687425530"),
