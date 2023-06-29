@@ -311,7 +311,6 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
 
-
 ## PROBLEME LA COMMANDE NE RENVOIE PAS DE RESULTAT LORSQU'ON SPECIFIE UNE CARTE PAR SON NUMERO
 # Commande pour afficher les échanges en cours
 @tree.command(guild=discord.Object(id=SERVER_ID), name='show_trades', description='Affiche les propositions de cartes en cours')
