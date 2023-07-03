@@ -5,80 +5,9 @@ from discord.ext import commands
 from discord import app_commands
 import logging
 
-from cards import Card, available_cards, User
+from cards import available_cards
+from functions import *
 from config import COMMAND_PREFIX, SERVER_ID, TOKEN
-
-import json
-import os
-
-USERS_FILE = 'user_data.json'
-
-# Fonction pour enregistrer les utilisateurs dans le fichier JSON
-def save_users(users):
-    with open('users.json', 'w') as file:
-        users_data = {}
-        for user_id, user in users.items():
-            users_data[user_id] = {
-                "username": user.username,
-                "searches": [card.card_number for card in user.searches],
-                "trades": [card.card_number for card in user.trades],
-                "score": user.score,  # Ajouter le score de l'utilisateur
-            }
-        json.dump(users_data, file)
-
-# Fonction pour charger les utilisateurs à partir du fichier JSON
-def load_users():
-    if not os.path.exists('users.json') or os.stat('users.json').st_size == 0:
-        return {}
-    with open('users.json', 'r') as file:
-        users_data = json.load(file)
-    users = {}
-    for user_id, user_data in users_data.items():
-        user = User(user_data["username"])
-        user.trades = [find_card_by_number(card_number) for card_number in user_data["trades"]]
-        user.searches = [find_card_by_number(card_number) for card_number in user_data["searches"]]
-        users[user_id] = user
-        user.score = user_data["score"]  # Ajouter le score de l'utilisateur
-    return users
-
-# Fonction pour trouver une carte par son numéro
-def find_card_by_number(card_number):
-    for card in available_cards:
-        if card.card_number == card_number:
-            return card
-    return None  # or raise an exception if a card with the given number doesn't exist
-
-# Fonction pour obtenir ou créer un utilisateur dans le dictionnaire des utilisateurs
-def get_or_create_user(users: dict, user_id: str, username: str) -> User:
-    user = users.get(user_id)
-    if user is None:
-        user = User(username)
-        users[user_id] = user
-        user.score = 0 # Initialiser le score à 0 lors de la création de l'utilisateur
-    return user
-
-# Fonction pour attribuer les points en fonction de la rareté de la carte
-def calculate_points(rarity):
-    if rarity == "Terrain":
-        return 2
-    elif rarity == "Commune":
-        return 4
-    elif rarity == "Peu Commune":
-        return 6
-    elif rarity == "Rare":
-        return 10
-    elif rarity == "Ultra rare holo 1":
-        return 15
-    elif rarity == "Ultra rare holo 2":
-        return 20
-    elif rarity == "Légendaire Bronze":
-        return 30
-    elif rarity == "Légendaire Argent":
-        return 40
-    elif rarity == "Légendaire Or":
-        return 50
-    else:
-        return 0  # Gérer le cas d'une rareté inconnue si nécessaire
 
 
 # Configuration de la journalisation vers un fichier
@@ -103,13 +32,16 @@ class aclient(discord.Client):
         if not self.synced: #check if slash commands have been synced 
             try:
                 await tree.sync(guild = discord.Object(id=SERVER_ID)) #guild specific: leave blank if global (global registration can take 1-24 hours)
+                #await tree.sync()
                 self.synced = True
                 logging.info(f"We have logged in as {self.user}.")
                 print(f"Le bot {self.user} est prêt.")
                 print(f"Nous sommes connecté en tant que {self.user}.")
+                #asyncio.create_task(send_notifications(self))  # On crée une tâche asynchrone pour envoyer les notifications
             except Exception as e:
                 logging.error("La synchronisation des commandes a échoué :", exc_info=True)
                 print("La synchronisation des commandes a échoué :", e)
+
 client = aclient() # On initialise le client
 tree = app_commands.CommandTree(client) # On initialise l'arbre de commande
 
@@ -118,7 +50,7 @@ cards_available = {}  # Dictionnaire pour stocker les cartes disponibles
 
 
 # Commande pour afficher les commandes disponibles
-@tree.command(guild = discord.Object(id=SERVER_ID), name = 'help_trade', description='Liste des commandes disponibles') 
+@tree.command(guild=discord.Object(id=SERVER_ID), name='help_trade', description='Liste des commandes disponibles') 
 async def help_trade(interaction: discord.Interaction):
     # Définition des commandes et leurs descriptions pour le bot
     embed = discord.Embed(title="Liste des commandes", description="Voici une liste des commandes que vous pouvez utiliser :", color=discord.Color.blue())
@@ -130,6 +62,10 @@ async def help_trade(interaction: discord.Interaction):
     embed.add_field(name="/show_trades [cards]", value="Afficher les échanges en cours pour des cartes spécifiées.", inline=False)
     embed.add_field(name="/reset", value="Réinitialiser les recherches et échanges de l'utilisateur.", inline=False)
     embed.add_field(name="/remove_card [card_identifiers]", value="Supprimer une ou plusieurs cartes des recherches/échanges de l'utilisateur.", inline=False)
+    embed.add_field(name="/profile", value="Affiche votre profile permettant de visualiser vos cartes recherchées/proposée, votre score, etc", inline=False)
+    embed.add_field(name="/leaderboad", value="Affiche le classement des échanges", inline=False)
+    embed.add_field(name="/stats", value="Affiche le nombre de recherches et de proposition en cours", inline=False)
+    embed.add_field(name="/delete_profile", value="Supprime totalement votre profile du bot.", inline=False)
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
 
@@ -156,15 +92,9 @@ async def show_available_cards(interaction: discord.Interaction):
         logging.error("La commande /show_available_cards a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
-
-# Divise une liste en morceaux de taille n.
-def chunks(lst, n):
-    for i in range(0, len(lst), n):
-        yield lst[i:i + n]
-
-
+### MODIFIER AFFICHAGE DU EMBED
 # Commande pour afficher les cartes spécifiées
-@tree.command(guild = discord.Object(id=SERVER_ID), name = 'show_selected_cards', description='Permet d\'afficher une ou plusieurs cartes particulière')
+@tree.command(guild=discord.Object(id=SERVER_ID), name='show_selected_cards', description='Permet d\'afficher une ou plusieurs cartes particulière')
 async def show_selected_cards(interaction: discord.Interaction, card_identifiers: str):
     try:
         logging.info("La commande /show_selected_cards a été exécutée.")
@@ -183,7 +113,7 @@ async def show_selected_cards(interaction: discord.Interaction, card_identifiers
                 cards_info.append(card_info)
 
         if cards_info:
-            await interaction.response.send_message("Voici les informations de la cartes :")  # initial response
+            await interaction.response.send_message("Voici les informations de la cartes :", ephemeral=True)  # initial response
             for card in cards_info:
                 embed = discord.Embed(title=card.name, description=f"# {card.card_number}\nRareté : {card.rarity}", color=discord.Color.blue())
                 embed.set_image(url=card.image_url)
@@ -193,14 +123,6 @@ async def show_selected_cards(interaction: discord.Interaction, card_identifiers
     except Exception as e:
         logging.error("La commande /show_selected_cards a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
-
-
-# Fonction pour obtenir les informations de la carte en fonction de son identifiant
-def get_card_information(card_identifier):
-    for card in available_cards:
-        if card.card_number == card_identifier or (card.name + " " + card.rarity) == card_identifier:
-            return card
-    return None
 
 
 # Commande pour rechercher une carte spécifique
@@ -236,13 +158,21 @@ async def search_card(interaction: discord.Interaction, card_identifiers: str):
         save_users(users)
 
         if cards_info:
-            embed = discord.Embed(title="Cartes recherchées", color=discord.Color.blue())
-            for card in cards_info:
-                embed.add_field(name=card.name, value=f"# {card.card_number}\nRareté : {card.rarity}", inline=False)
-            await interaction.response.send_message(f"{interaction.user.mention} recherche :", embed=embed)
+            embeds = build_card_info_embeds(cards_info)
+
+            for index, embed in enumerate(embeds):
+                if index == 0:
+                    await interaction.response.send_message(f"{interaction.user.mention} recherche :", embed=embed)
+                else:
+                    await interaction.followup.send(f"{interaction.user.mention} recherche :", embed=embed)
+        
+        #heck_card_matches(main_card)  # Vérifier les correspondances de cartes
+
+
     except Exception as e:
         logging.error("La commande /search_card a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
 
 ### A OPTIMISER POUR NE PAS AVOIR A PARCOURIR LA LISTE DE TOUTE LES CARES A CHAQUE FOIS
 # Commande pour rechercher une carte spécifique en échange d'autres cartes spécifiées
@@ -322,13 +252,16 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
 
         trade_cards_list = [card.strip() for card in trade_cards.split(',')]
 
+        cards_info = []
         for card_identifier in trade_cards_list:
             card_info = next((card for card in available_cards if card.card_number == card_identifier or (card.name + " " + card.rarity).lower() == card_identifier.lower()), None)
             if card_info:
                 user.trades.append(card_info)
+                cards_info.append(card_info)
             # Calculer les points et les ajouter au score de l'utilisateur
             points = calculate_points(card_info.rarity)
             user.score += points
+            
 
         save_users(users)
 
@@ -336,16 +269,19 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
             await interaction.response.send_message("Veuillez spécifier une ou plusieurs cartes valides à échanger.", ephemeral=True)
             return
 
-        embed = discord.Embed(title="Cartes proposées en échange", description="Voici les cartes que vous proposez en échange :", color=discord.Color.blue())
-        for card in user.trades:
-            embed.add_field(name=card.name, value=f"# {card.card_number}\nRareté : {card.rarity}", inline=False)
-        await interaction.response.send_message(f"{interaction.user.mention} propose en échange :", embed=embed)
+        embeds = build_card_info_embeds(cards_info)
+
+        for index, embed in enumerate(embeds):
+            if index == 0:
+                await interaction.response.send_message(f"{interaction.user.mention} propose en échange :", embed=embed)
+            else:
+                await interaction.followup.send(f"{interaction.user.mention} propose en échange :", embed=embed)
+     
     except Exception as e:
         logging.error("La commande /trade_cards a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
 
-## PROBLEME LA COMMANDE NE RENVOIE PAS DE RESULTAT LORSQU'ON SPECIFIE UNE CARTE PAR SON NUMERO
 # Commande pour afficher les échanges en cours
 @tree.command(guild=discord.Object(id=SERVER_ID), name='show_trades', description='Affiche les propositions de cartes en cours')
 async def show_trades(interaction: discord.Interaction, cards: str = ""):
@@ -361,9 +297,14 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
             trades = []
             for user in users.values():
                 for trade in user.trades:
-                    card_info = next((card for card in available_cards if card.card_number == trade or card.name.lower() in trade.lower()), None)
-                    if card_info and any(card.lower() == trade.lower() or card.card_number.lower() == trade.lower() or (isinstance(card_info, Card) and card.lower() in card_info.name.lower() or card.lower() in card_info.rarity.lower()) for card in cards):
-                        trades.append(f"{user.username} propose : {card_info.name} ({card_info.rarity})")
+                    #card_info = find_card_by_number(trade)
+                    card_info = next((card for card in available_cards if
+                    (str(card.card_number) == trade or card.name.lower() in trade.lower()) and
+                    any((card.card_number.lower() == c.lower() or
+                    (card.name.lower() + " " + card.rarity.lower()) == c.lower())
+                    for c in cards)), None)
+                    if card_info:
+                        trades.append(f"{user.username} propose : # {card_info.card_number} {card_info.name} ({card_info.rarity})")
 
             if trades:
                 embed = discord.Embed(title="Échanges concernant les cartes spécifiées", color=discord.Color.blue())
@@ -381,12 +322,27 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
                         if card_info:
                             trades.append(f"{user.username} propose : # {card_info.card_number} {card_info.name} ({card_info.rarity})")
 
-            if trades:
+            description = "\n".join(trades)
+            if len(description) > 4096:
+                # Diviser le contenu en plusieurs parties
+                parts = [description[i:i+4093] for i in range(0, len(description), 4093)]
+
+                # Envoyer le premier embed en utilisant interaction.response.send_message()
                 embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
-                embed.description = "\n".join(trades)
+                embed.description = parts[0]
                 await interaction.response.send_message(embed=embed, ephemeral=True)
+
+                # Envoyer les embeds suivants en utilisant interaction.followup.send()
+                for part in parts[1:]:
+                    embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
+                    embed.description = part
+                    await interaction.followup.send(embed=embed, ephemeral=True)
             else:
-                await interaction.response.send_message("Il n'y a pas d'échanges en cours.", ephemeral=True)
+                # Envoyer un seul embed si la description n'a pas besoin d'être divisée
+                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
+                embed.description = description
+                await interaction.response.send_message(embed=embed, ephemeral=True)
+            
     except Exception as e:
         logging.error("La commande /show_trades a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
@@ -471,23 +427,28 @@ async def profile(interaction: discord.Interaction):
             await interaction.response.send_message("Votre profil utilisateur n'existe pas.", ephemeral=True)
             return
 
-        embed = discord.Embed(title="Profil utilisateur", color=discord.Color.blue())
-        embed.add_field(name="Utilisateur", value=interaction.user.name, inline=False)
-        embed.add_field(name="Score", value=user.score, inline=False)
+        embeds = []
 
-        if user.searches:
-            searches_list = [f"# {card.card_number} {card.name} ({card.rarity})" for card in user.searches]
-            embed.add_field(name="Recherches en cours", value="\n".join(searches_list), inline=False)
-        else:
-            embed.add_field(name="Recherches en cours", value="Aucune recherche en cours", inline=False)
+        # Construction des embeds paginés
+        profile_embed = discord.Embed(title="Profil utilisateur", color=discord.Color.blue())
+        profile_embed.add_field(name="Utilisateur", value=interaction.user.name, inline=False)
+        embeds.append(profile_embed)
 
-        if user.trades:
-            trades_list = [f"# {card.card_number} {card.name} ({card.rarity})" for card in user.trades]
-            embed.add_field(name="Cartes proposées en échange", value="\n".join(trades_list), inline=False)
-        else:
-            embed.add_field(name="Cartes proposées en échange", value="Aucune carte proposée en échange", inline=False)
+        # Construction des autres parties du profil utilisateur
+        searches_embeds = build_searches_embeds(user.searches)
+        trades_embeds = build_trades_embeds(user.trades)
 
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+        # Ajout des embeds de recherches et échanges
+        embeds.extend(searches_embeds)
+        embeds.extend(trades_embeds)
+
+        # Envoi des embeds paginés
+        for index, embed in enumerate(embeds):
+            if index == 0:
+                await interaction.response.send_message(embed=embed, ephemeral=True)
+            else:
+                await interaction.followup.send(embed=embed, ephemeral=True)
+
     except Exception as e:
         logging.error("La commande /profile a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
