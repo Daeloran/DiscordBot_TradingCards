@@ -272,6 +272,7 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
         embeds = build_card_info_embeds(cards_info)
 
         for index, embed in enumerate(embeds):
+            embed.color = discord.Color.yellow()
             if index == 0:
                 await interaction.response.send_message(f"{interaction.user.mention} propose en échange :", embed=embed)
             else:
@@ -307,7 +308,7 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
                         trades.append(f"{user.username} propose : # {card_info.card_number} {card_info.name} ({card_info.rarity})")
 
             if trades:
-                embed = discord.Embed(title="Échanges concernant les cartes spécifiées", color=discord.Color.blue())
+                embed = discord.Embed(title="Échanges concernant les cartes spécifiées", color=discord.Color.purple())
                 embed.description = "\n".join(trades)
                 await interaction.response.send_message(embed=embed, ephemeral=True)
             else:
@@ -328,18 +329,18 @@ async def show_trades(interaction: discord.Interaction, cards: str = ""):
                 parts = [description[i:i+4093] for i in range(0, len(description), 4093)]
 
                 # Envoyer le premier embed en utilisant interaction.response.send_message()
-                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
+                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.purple())
                 embed.description = parts[0]
                 await interaction.response.send_message(embed=embed, ephemeral=True)
 
                 # Envoyer les embeds suivants en utilisant interaction.followup.send()
                 for part in parts[1:]:
-                    embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
+                    embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.purple())
                     embed.description = part
                     await interaction.followup.send(embed=embed, ephemeral=True)
             else:
                 # Envoyer un seul embed si la description n'a pas besoin d'être divisée
-                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.blue())
+                embed = discord.Embed(title="Liste de tous les échanges en cours", color=discord.Color.purple())
                 embed.description = description
                 await interaction.response.send_message(embed=embed, ephemeral=True)
             

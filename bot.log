@@ -795,3 +795,33 @@ INFO:root:La commande /profile a été exécutée.
 INFO:root:La commande /leaderboard a été exécutée.
 INFO:root:La commande /stats a été exécutée.
 INFO:root:La commande /delete_profile a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: dba9b954777d3f2d5d758d6d801d7b34).
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4c53f69a530dcedf38f05ec6f5ae4c6c).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 272, in trade_cards
+    embeds = discord.Embed(build_card_info_embeds(cards_info), color=discord.Color.blue())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Embed.__init__() takes 1 positional argument but 2 positional arguments (and 1 keyword-only argument) were given
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 2407073af281814f2b4d2670812c4283).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 5b318020f20ba70acb630d110f0a2916).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /show_trades a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 5f0acad6186fef22c68929d036a8a534).
+INFO:root:La commande /show_trades a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
