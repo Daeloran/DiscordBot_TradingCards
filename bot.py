@@ -11,30 +11,6 @@ from functions import *
 from config import COMMAND_PREFIX, SERVER_ID, TOKEN
 
 
-async def notifications(cards_info, interaction_user):
-    users = load_users()
-
-    for user_id in users.keys():
-        user = users[user_id]
-        found_cards = []
-        for search_card in user.searches:
-            for card_info in cards_info:
-                if search_card.card_number == card_info.card_number:
-                    found_cards.append(card_info)
-
-        if found_cards:
-            message = f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez :\n"
-            for card in found_cards:
-                message += f"Numéro : {card.card_number}\n"
-                message += f"Nom : {card.name}\n"
-                message += f"Rareté : {card.rarity}\n\n"
-
-            to = await client.fetch_user(int(user_id))
-            if to:
-                print('sending message to', to)
-                await to.send(message)
-
-
 # Configuration de la journalisation vers un fichier
 logging.basicConfig(filename='bot.log', level=logging.INFO)
 if not logging.getLogger().handlers:
@@ -204,7 +180,13 @@ async def search_card(interaction: discord.Interaction, card_identifiers: str):
                 else:
                     await interaction.followup.send(f"{interaction.user.mention} recherche :", embed=embed)
         
-        #heck_card_matches(main_card)  # Vérifier les correspondances de cartes
+        # Appeler la fonction notifications pour rechercher les utilisateurs proposant les cartes spécifiées
+        notified_users = await notifications(cards_info, interaction.user, "trade")
+
+        # Créer le message de notification dans le canal avec les utilisateurs notifiés
+        if notified_users:
+            users_mentions = " ".join(f"<@{user_id}>" for user_id in notified_users)
+            await interaction.followup.send(f"{users_mentions}, {interaction.user.mention} recherche des cartes et tu pourrais l'aider !")
 
 
     except Exception as e:
@@ -283,9 +265,8 @@ async def search_card_for_trade(interaction: discord.Interaction, card_to_search
 async def trade_cards(interaction: discord.Interaction, trade_cards: str):
     try:
         logging.info("La commande /trade_cards a été exécutée.")
-        
-        users = load_users()
 
+        users = load_users()
         user = get_or_create_user(users, str(interaction.user.id), interaction.user.name)
 
         trade_cards_list = [card.strip() for card in trade_cards.split(',')]
@@ -299,15 +280,13 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
             # Calculer les points et les ajouter au score de l'utilisateur
             points = calculate_points(card_info.rarity)
             user.score += points
-            
-        # Vérifier les recherches correspondantes et afficher un message
-        await notifications(cards_info, interaction.user)
 
         save_users(users)
 
         if not user.trades:
             await interaction.response.send_message("Veuillez spécifier une ou plusieurs cartes valides à échanger.", ephemeral=True)
             return
+
 
         embeds = build_card_info_embeds(cards_info)
 
@@ -317,7 +296,15 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
                 await interaction.response.send_message(f"{interaction.user.mention} propose en échange :", embed=embed)
             else:
                 await interaction.followup.send(f"{interaction.user.mention} propose en échange :", embed=embed)
-     
+
+        # Appeler la fonction notifications pour rechercher les utilisateurs recherchant les cartes spécifiées
+        notified_users = await notifications(cards_info, interaction.user, "search")
+
+        # Créer le message de notification dans le canal avec les utilisateurs notifiés
+        if notified_users:
+            users_mentions = " ".join(f"<@{user_id}>" for user_id in notified_users)
+            await interaction.followup.send(f"{users_mentions}, {interaction.user.mention} propose en échange des cartes interessantes !")
+
     except Exception as e:
         logging.error("La commande /trade_cards a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)

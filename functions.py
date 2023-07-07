@@ -142,5 +142,26 @@ def chunks(lst, n):
         yield lst[i:i + n]
 
 
+async def notifications(cards_info, interaction_user, notification_type):
+    users = load_users()
+    notified_users = []
 
+    for user_id, user in users.items():
+        found_cards = []
+        for card_info in cards_info:
+            if notification_type == "search" and card_info in user.searches:
+                found_cards.append(card_info)
+            elif notification_type == "trade" and card_info in user.trades:
+                found_cards.append(card_info)
+
+        if found_cards:
+            notified_users.append(user_id)
+            """"
+            to = await client.fetch_user(int(user_id))
+            if to:
+                print('sending message to', to)
+                await to.send(message)
+            """
+
+    return notified_users
 
