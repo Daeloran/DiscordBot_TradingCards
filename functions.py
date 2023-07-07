@@ -3,10 +3,10 @@
 import json
 import os
 import discord
-import asyncio
 
-from classes import Card, User
+from classes import User
 from cards import available_cards
+#from bot import aclient
 
 USERS_FILE = 'user_data.json'
 
@@ -140,5 +140,7 @@ def build_card_info_embeds(cards_info):
 def chunks(lst, n):
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
+
+
 
 

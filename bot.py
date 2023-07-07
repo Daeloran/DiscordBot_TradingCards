@@ -4,10 +4,35 @@ import discord
 from discord.ext import commands
 from discord import app_commands
 import logging
+import random
 
 from cards import available_cards
 from functions import *
 from config import COMMAND_PREFIX, SERVER_ID, TOKEN
+
+
+async def notifications(cards_info, interaction_user):
+    users = load_users()
+
+    for user_id in users.keys():
+        user = users[user_id]
+        found_cards = []
+        for search_card in user.searches:
+            for card_info in cards_info:
+                if search_card.card_number == card_info.card_number:
+                    found_cards.append(card_info)
+
+        if found_cards:
+            message = f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez :\n"
+            for card in found_cards:
+                message += f"Numéro : {card.card_number}\n"
+                message += f"Nom : {card.name}\n"
+                message += f"Rareté : {card.rarity}\n\n"
+
+            to = await client.fetch_user(int(user_id))
+            if to:
+                print('sending message to', to)
+                await to.send(message)
 
 
 # Configuration de la journalisation vers un fichier
@@ -48,6 +73,19 @@ tree = app_commands.CommandTree(client) # On initialise l'arbre de commande
 users = {}  # Dictionnaire pour stocker les informations des utilisateurs
 cards_available = {}  # Dictionnaire pour stocker les cartes disponibles
 
+@tree.command(guild=discord.Object(id=SERVER_ID), name='secret', description='Vous envoie un message secret')
+async def DM(interaction: discord.Interaction):
+    messages = [
+        "Hey ! Juste un petit message pour te dire que tu es fantastique et que tu rends ce monde meilleur.",
+        "Salut ! Tu as un sourire radieux qui illumine la journée de chacun. Continue d'être toi-même, c'est génial !",
+        "Coucou ! Savais-tu que tu es une source d'inspiration pour beaucoup de personnes ? Continue de briller et de faire la différence !",
+        "Bonjour ! Aujourd'hui est une journée spéciale parce que tu es là. N'oublie pas à quel point tu es important et aimé(e) !",
+        "Salut toi ! Tu es unique et précieux/precieuse. Ne laisse jamais personne te faire douter de ta valeur. Sois fier/fière de qui tu es !"
+    ]
+    
+    interaction = await interaction.user.create_dm()
+    message = random.choice(messages)
+    await interaction.send(message)
 
 # Commande pour afficher les commandes disponibles
 @tree.command(guild=discord.Object(id=SERVER_ID), name='help_trade', description='Liste des commandes disponibles') 
@@ -262,6 +300,8 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
             points = calculate_points(card_info.rarity)
             user.score += points
             
+        # Vérifier les recherches correspondantes et afficher un message
+        await notifications(cards_info, interaction.user)
 
         save_users(users)
 
@@ -486,7 +526,7 @@ async def stats(interaction: discord.Interaction):
         total_searches = sum(len(user.searches) for user in users.values())
         total_trades = sum(len(user.trades) for user in users.values())
 
-        embed = discord.Embed(title="Statistiques du bot", color=discord.Color.blue())
+        embed = discord.Embed(title="Statistiques du bot", color=discord.Color.purple())
         embed.add_field(name="Nombre de recherches en cours", value=total_searches, inline=False)
         embed.add_field(name="Nombre d'échanges en cours", value=total_trades, inline=False)
 
