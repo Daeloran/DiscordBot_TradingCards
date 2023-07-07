@@ -825,3 +825,881 @@ INFO:discord.client:logging in using static token
 INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 5f0acad6186fef22c68929d036a8a534).
 INFO:root:La commande /show_trades a été exécutée.
 INFO:root:We have logged in as TestTrade#2680.
+INFO:discord.gateway:Shard ID None has successfully RESUMED session 5f0acad6186fef22c68929d036a8a534.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 9492cb9317cb59d11908c82d100ff82f).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a4e3fc55d42ab16eba33d5e1eb51f61f).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 267, in trade_cards
+    await send_notification(trade_card.name)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 148, in send_notification
+    for user in users:
+                       
+AttributeError: 'str' object has no attribute 'searches'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: c10e9756ccf397bfaf0c919fb53d03fc).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: fd0b0b42b400716f6ff5c509bf7d3dda).
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 36f3e9f42f6a24824bfe1b16471417ba).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ce4b574fba51c96e911c6d904eab37df).
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 7eb03dbedb5b2d7426cb25600bf0b123).
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 86a130fdf349584d82ce2fe093e175d7).
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 22b8e554ae6ef1e911b40328414213e3).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0baf962376c92d55cfd09acbae5ab65c).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: b5ff65665b00b44acd0c04122851d138).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4226e035fc8229c97d9e6b85b26f4838).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 264, in trade_cards
+    searches = await load_user_searches()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 150, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 98ae6cae9663c68d26c884a0f6a42c0e).
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0bb1b2881176d87e4bab6eeb56ea6cbc).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 2918e591ab94c3d1706405e3152c0baa).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 265, in trade_cards
+    await load_user_searches(cards_info)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 149, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 265, in trade_cards
+    await load_user_searches(cards_info)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 149, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 611e972ad45c7ca7db243fa861242418).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 265, in trade_cards
+    await load_user_searches(cards_info)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 150, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1a7b3cf4db7af1a1fd4cd950f33e9fd1).
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 266, in trade_cards
+    await load_user_searches(cards_info)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 150, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 266, in trade_cards
+    await load_user_searches(cards_info)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 150, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: c8ac1cae35067d6ed8208c2884020258).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 265, in trade_cards
+    await load_user_searches(trade_cards_list)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 149, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 191a8fb4b9e226fbce6eb8b55650926f).
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 265, in trade_cards
+    await load_user_searches(trade_cards_list)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\functions.py", line 150, in load_user_searches
+    for search_card in user.searches:
+                       ^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'searches'
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 30106ad6c008a1bd11f130ddc906bc68).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 820fbfc8d2d4d6912f46b07ed25cf784).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 7da0b488b7ed9178584a3d80ac3a2068).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a426c45aaf269b2cab119dd88fc75870).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 04cab7df2950a7d9e7db5314135ae73b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 58f0ffaa231f963082746e174a2f7101).
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 262b3a0b9f065331aedea1ac5a1dd199).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 263, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 250, in load_users
+    user = User(user_data["username"])
+           ^^^^
+NameError: name 'User' is not defined
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3ba8556bc8a2b7a673d70f592553794d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 18fb925d11d31dcbf09f4e541d6eecdf).
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:root:We have logged in as TestTrade#2680.
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 693558fddb31ac68e24a05b8d908d5b0).
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:root:We have logged in as TestTrade#2680.
+INFO:discord.client:logging in using static token
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 9f042af3942d4cadae820436ec0d89e5).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0c05e7ceef25db2af6e75132dad1cb4d).
+ERROR:discord.client:Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\classes.py", line 16, in on_ready
+    await tree.sync(guild = discord.Object(id=SERVER_ID)) #guild specific: leave blank if global (global registration can take 1-24 hours)
+          ^^^^
+NameError: name 'tree' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Lupink\AppData\Local\Programs\Python\Python311\Lib\site-packages\discord\client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\classes.py", line 24, in on_ready
+    logging.error("La synchronisation des commandes a échoué :", exc_info=True)
+    ^^^^^^^
+NameError: name 'logging' is not defined
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 9a29a8df5183db5c3a1decac81823d7f).
+ERROR:root:La synchronisation des commandes a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\classes.py", line 17, in on_ready
+    await tree.sync(guild = discord.Object(id=SERVER_ID)) #guild specific: leave blank if global (global registration can take 1-24 hours)
+          ^^^^
+NameError: name 'tree' is not defined
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: eb8a33f8eb4ae09d3baeec5a94e23ea3).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 249, in trade_cards
+    users = load_users()
+            ^^^^^^^^^^
+NameError: name 'load_users' is not defined
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 5e787a2a54412fd446db0f0975e26970).
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1bed4689aac38d54140e55f9f0315881).
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 7afd6433a46e5ee70a425f95d867161a).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 48a9f9247ed446c1b7824efe656737cc).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 284, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_user_searches() missing 1 required positional argument: 'ctx'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: b2a3f07c5b01f856be7a88cb2cc90dcb).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ec76fc2da8eae92bea3f69dea141a6f1).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4dce0e5035b8e14fa032a79bef799fac).
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1d6afb47919249da8f4c1ad02550dcc8).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 287, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_user_searches() missing 1 required positional argument: 'interaction_user'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d5f47262a3c9cac2529cb9b7d51b71c4).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 287, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: load_user_searches() missing 1 required positional argument: 'interaction'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3b8ff992f95a4ad63c51b9956a85f984).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 287, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 15, in load_user_searches
+    channel = DM()
+              ^^^^
+TypeError: 'Command' object is not callable
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4b9ba27037b66acf6e0c583dcb2f945a).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 287, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 15, in load_user_searches
+    channel = DM()
+              ^^^^
+TypeError: DM() missing 1 required positional argument: 'interaction'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: e1564aa70be9e05aae1b28d81ebc4e63).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 9ee89350c09ce6bad08a7b87aff60f34).
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 672a8660dcfc94b28c4a3572fc2073a8).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 299, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 24, in load_user_searches
+    await channel.send(f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez : {cards_list}.")
+          ^^^^^^^^^^^^
+AttributeError: type object 'Interaction' has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3cb71467e774fae1125426de366cab1b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 300, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 16, in load_user_searches
+    channel = await dm.user.create_dm()
+                    ^^^^^^^^^^^^^^^^^
+AttributeError: 'member_descriptor' object has no attribute 'create_dm'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 331c0d8e08ed3fcff5c36c1c2cae2f89).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 301, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 16, in load_user_searches
+    channel = await dm.user.create_dm()
+                    ^^^^^^^^^^^^^^^^^
+AttributeError: 'member_descriptor' object has no attribute 'create_dm'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 4aae57ed22db90b1a9e313067c873ed3).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 301, in trade_cards
+    await load_user_searches(cards_info, interaction.user.id)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 16, in load_user_searches
+    channel = await dm.user.create_dm()
+                    ^^^^^^^^^^^^^^^^^
+AttributeError: 'member_descriptor' object has no attribute 'create_dm'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0c6365a00f2310bf90234583a6f2f525).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 300, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 24, in load_user_searches
+    await message.send(f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez : {cards_list}.")
+          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: df85aa2474ebb106c0b7bd228f455d80).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 301, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 16, in load_user_searches
+    await message.send('coucou')
+      ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1454944b9bf85d9fa13f4ba6ba410da4).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 302, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 26, in load_user_searches
+    await message.send(f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez : {cards_list}.")
+          ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 417c3ff8309691646882c8c5ca20c2ee).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 300, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 24, in load_user_searches
+    await interaction_user.send(f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez : {cards_list}.")
+                                                                                                                            ^^^^^^^^^^
+NameError: name 'cards_list' is not defined
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 2802f7d72b778f0312b96f811aefe1e1).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f26e691960b8c42883395a1fca5f7097).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1bcf36ec34e88c6b891132998029daf9).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 299, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 20, in load_user_searches
+    if search_card.card_number == card_info.card_number:
+                                  ^^^^^^^^^
+NameError: name 'card_info' is not defined
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f6ad321386e37b4768ec5b3763ba5d8e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 26d0468d0aa0295bb845bc509a010278).
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 744b595405cddf6273371ca4b1e9773e).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 921961a387f64973d6c355bcf0c1451b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: e6e294970862f08ae94ce0afc497410b).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f4ae878626810e2a25769c7445c9c551).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: aa67bfc62d54b5acbcbde838806ce72a).
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 297, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 18, in load_user_searches
+    print(user.values())
+          ^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'values'
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /reset a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 0408ef336de86f5394f3a6f8bd173bd7).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 295, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 22, in load_user_searches
+    await interaction_user.send(message)
+                                ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 93d019c95d94fc2039fec3ff39840d52).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 8520326c02cb28d70e396fcf1681ddd4).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 7d7ee0c16e433aafa9807b0ea5e946f5).
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 93906036eeac43dfa934835bb4c02ca1).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: eb4ba827b70a2af367d784139a98bf47).
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: abe5c1e887612438f1ddd6be492723f2).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 3bd00114a831577992ed64b7bad1b0f4).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 299, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 30, in load_user_searches
+    await interaction_user.send(message)
+                                ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 299, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 30, in load_user_searches
+    await interaction_user.send(message)
+                                ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: c57c2d3c63fc93c5a5c5c4f2425a3258).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 301, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 31, in load_user_searches
+    if message:
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 6bb27394cb188896c99a809d9fe107d3).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 302, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 32, in load_user_searches
+    if message:
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 302, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 32, in load_user_searches
+    if message:
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ac4b73e066d85f015532a063a6385f19).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 303, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 33, in load_user_searches
+    if message:
+       ^^^^^^^
+UnboundLocalError: cannot access local variable 'message' where it is not associated with a value
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a47eaa068ddb587982e99eabe72654c7).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /search_card a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 39e395aaba03acb1fca737654a64c146).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 303, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 33, in load_user_searches
+    await user.send(message)
+          ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: ca4d2f0bc90dbb4cb4dd16ab5fd73140).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 304, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 34, in load_user_searches
+    await user.send(message)
+          ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'send'
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 304, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 34, in load_user_searches
+    await user.send(message)
+          ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: a6d9de98c1d34cffc8ac698bf85f75b6).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 304, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 19, in load_user_searches
+    print(user.values())
+          ^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'values'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1affe49e8e2540e0cfd47ce6ea7508c1).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 304, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 34, in load_user_searches
+    await user.send(message)
+          ^^^^^^^^^
+AttributeError: 'User' object has no attribute 'send'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: d66a6e6ebfc10754bb80143ac763c2be).
+INFO:root:We have logged in as TestTrade#2680.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 07a5a170e164c18a8d4f7cc3409667c4).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 304, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 34, in load_user_searches
+    await client.send_message(user,message)
+          ^^^^^^^^^^^^^^^^^^^
+AttributeError: 'aclient' object has no attribute 'send_message'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: f3e0c7eeb0ec5848c5e73b84036ef092).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 305, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 20, in load_user_searches
+    to = client.get_user(int(user.user_id))
+                             ^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'user_id'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 1fce589d5c83e3613be9451e9768d6fb).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 305, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 20, in load_user_searches
+    to = client.get_user(int(user.user_id))
+                             ^^^^^^^^^^^^
+AttributeError: 'User' object has no attribute 'user_id'
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 00898a2ae2a16cef22bc2d06a93ea2ba).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+ERROR:root:La commande /trade_cards a échoué :
+Traceback (most recent call last):
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 312, in trade_cards
+    await load_user_searches(cards_info, interaction.user)
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\bot.py", line 22, in load_user_searches
+    user = User.from_dict(user_data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\OneDrive\Documents\Projets\DiscordBot_TradingCards\classes.py", line 47, in from_dict
+    user = cls(data['username'])
+               ~~~~^^^^^^^^^^^^
+TypeError: 'User' object is not subscriptable
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: 2a99fbe0bc004f00764f51af628b7be7).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+WARNING:discord.client:PyNaCl is not installed, voice will NOT be supported
+INFO:discord.client:logging in using static token
+INFO:discord.gateway:Shard ID None has connected to Gateway (Session ID: eddb30ff3b6132effe009ed3c748ef3d).
+INFO:root:We have logged in as TestTrade#2680.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
+INFO:root:La commande /trade_cards a été exécutée.
