@@ -4,7 +4,7 @@ import json
 import os
 import discord
 
-from classes import User
+from classes import User, Evaluation
 from cards import available_cards
 #from bot import aclient
 
@@ -22,9 +22,10 @@ def save_users(users):
                 "username": user.username,
                 "searches": [card.card_number for card in user.searches],
                 "trades": [card.card_number for card in user.trades],
-                "score": user.score,  # Ajouter le score de l'utilisateur
+                "score": user.score,
+                "evaluations": [evaluation.to_dict() for evaluation in user.evaluations],
             }
-        json.dump(users_data, file)
+        json.dump(users_data, file, indent=4)
 
 # Fonction pour charger les utilisateurs à partir du fichier JSON
 def load_users():
@@ -37,9 +38,19 @@ def load_users():
         user = User(user_data["username"])
         user.trades = [find_card_by_number(card_number) for card_number in user_data["trades"]]
         user.searches = [find_card_by_number(card_number) for card_number in user_data["searches"]]
-        users[user_id] = user
         user.score = user_data["score"]  # Ajouter le score de l'utilisateur
+
+        # Charger les évaluations si elles existent
+        if "evaluations" in user_data:
+            for evaluation_data in user_data["evaluations"]:
+                evaluator_username = evaluation_data["evaluator_username"]
+                rating = evaluation_data["rating"]
+                comment = evaluation_data["comment"]
+                user.add_evaluation(Evaluation(evaluator_username, rating, comment))
+
+        users[user_id] = user
     return users
+
 
 # Fonction pour obtenir ou créer un utilisateur dans le dictionnaire des utilisateurs
 def get_or_create_user(users: dict, user_id: str, username: str) -> User:
@@ -164,4 +175,5 @@ async def notifications(cards_info, interaction_user, notification_type):
             """
 
     return notified_users
+
 
