@@ -28,24 +28,56 @@ class User:
         self.searches = []  # Liste des recherches en cours de l'utilisateur (contenant des objets Card)
         self.trades = []  # Liste des échanges en cours de l'utilisateur (contenant des objets Card)
         self.score = 0  # Score de l'utilisateur
-    
+        self.evaluations = []  # Liste des évaluations de l'utilisateur
+
     def reset(self):
         self.searches = []
         self.trades = []
         self.score = 0
-    
+        #self.evaluations = []
+
     def to_dict(self):
         return {
             "username": self.username,
             "searches": [card.to_dict() for card in self.searches],
             "trades": [card.to_dict() for card in self.trades],
             "score": self.score,
+            "evaluations": [evaluation.to_dict() for evaluation in self.evaluations],
         }
-    
+
     @classmethod
     def from_dict(cls, data):
         user = cls(data['username'])
-        user.searches = [Card(card_info['card_number'], card_info['name'], card_info['rarity'], card_info['image_url']) for card_info in data['searches']]
-        user.trades = [Card(card_info['card_number'], card_info['name'], card_info['rarity'], card_info['image_url']) for card_info in data['trades']]
+        user.searches = [Card.from_dict(card_info) for card_info in data['searches']]
+        user.trades = [Card.from_dict(card_info) for card_info in data['trades']]
         user.score = data['score']
+        user.evaluations = [Evaluation.from_dict(evaluation_info) for evaluation_info in data.get('evaluations', [])]
         return user
+
+    def add_evaluation(self, evaluation):
+        self.evaluations.append(evaluation)
+
+    
+class Evaluation:
+    def __init__(self, evaluator_username, rating, comment=None, cards_sent=None):
+        self.evaluator_username = evaluator_username
+        self.rating = rating
+        self.comment = comment
+        self.cards_sent = cards_sent if cards_sent is not None else []
+
+    def to_dict(self):
+        return {
+            "evaluator_username": self.evaluator_username,
+            "rating": self.rating,
+            "comment": self.comment,
+            "cards_sent": self.cards_sent,
+        }
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            data["evaluator_username"],
+            data["rating"],
+            comment=data.get("comment"),
+            cards_sent=data.get("cards_sent"),
+        )

@@ -6,33 +6,10 @@ from discord import app_commands
 import logging
 import random
 
+from classes import Evaluation
 from cards import available_cards
 from functions import *
 from config import COMMAND_PREFIX, SERVER_ID, TOKEN
-
-
-async def notifications(cards_info, interaction_user):
-    users = load_users()
-
-    for user_id in users.keys():
-        user = users[user_id]
-        found_cards = []
-        for search_card in user.searches:
-            for card_info in cards_info:
-                if search_card.card_number == card_info.card_number:
-                    found_cards.append(card_info)
-
-        if found_cards:
-            message = f"L'utilisateur {interaction_user.name} propose les cartes suivantes que vous recherchez :\n"
-            for card in found_cards:
-                message += f"Numéro : {card.card_number}\n"
-                message += f"Nom : {card.name}\n"
-                message += f"Rareté : {card.rarity}\n\n"
-
-            to = await client.fetch_user(int(user_id))
-            if to:
-                print('sending message to', to)
-                await to.send(message)
 
 
 # Configuration de la journalisation vers un fichier
@@ -73,8 +50,14 @@ tree = app_commands.CommandTree(client) # On initialise l'arbre de commande
 users = {}  # Dictionnaire pour stocker les informations des utilisateurs
 cards_available = {}  # Dictionnaire pour stocker les cartes disponibles
 
+async def direct_message(user, message):
+    to = await client.fetch_user(int(user))
+    if to:
+        #print('sending message to', to)
+        await to.send(message)
+
 @tree.command(guild=discord.Object(id=SERVER_ID), name='secret', description='Vous envoie un message secret')
-async def DM(interaction: discord.Interaction):
+async def secret(interaction: discord.Interaction):
     messages = [
         "Hey ! Juste un petit message pour te dire que tu es fantastique et que tu rends ce monde meilleur.",
         "Salut ! Tu as un sourire radieux qui illumine la journée de chacun. Continue d'être toi-même, c'est génial !",
@@ -204,7 +187,13 @@ async def search_card(interaction: discord.Interaction, card_identifiers: str):
                 else:
                     await interaction.followup.send(f"{interaction.user.mention} recherche :", embed=embed)
         
-        #heck_card_matches(main_card)  # Vérifier les correspondances de cartes
+        # Appeler la fonction notifications pour rechercher les utilisateurs proposant les cartes spécifiées
+        notified_users = await notifications(cards_info, interaction.user, "trade")
+
+        # Créer le message de notification dans le canal avec les utilisateurs notifiés
+        if notified_users:
+            users_mentions = " ".join(f"<@{user_id}>" for user_id in notified_users)
+            await interaction.followup.send(f"{users_mentions}, {interaction.user.mention} recherche des cartes et tu pourrais l'aider !")
 
 
     except Exception as e:
@@ -283,9 +272,8 @@ async def search_card_for_trade(interaction: discord.Interaction, card_to_search
 async def trade_cards(interaction: discord.Interaction, trade_cards: str):
     try:
         logging.info("La commande /trade_cards a été exécutée.")
-        
-        users = load_users()
 
+        users = load_users()
         user = get_or_create_user(users, str(interaction.user.id), interaction.user.name)
 
         trade_cards_list = [card.strip() for card in trade_cards.split(',')]
@@ -299,15 +287,13 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
             # Calculer les points et les ajouter au score de l'utilisateur
             points = calculate_points(card_info.rarity)
             user.score += points
-            
-        # Vérifier les recherches correspondantes et afficher un message
-        await notifications(cards_info, interaction.user)
 
         save_users(users)
 
         if not user.trades:
             await interaction.response.send_message("Veuillez spécifier une ou plusieurs cartes valides à échanger.", ephemeral=True)
             return
+
 
         embeds = build_card_info_embeds(cards_info)
 
@@ -317,7 +303,15 @@ async def trade_cards(interaction: discord.Interaction, trade_cards: str):
                 await interaction.response.send_message(f"{interaction.user.mention} propose en échange :", embed=embed)
             else:
                 await interaction.followup.send(f"{interaction.user.mention} propose en échange :", embed=embed)
-     
+
+        # Appeler la fonction notifications pour rechercher les utilisateurs recherchant les cartes spécifiées
+        notified_users = await notifications(cards_info, interaction.user, "search")
+
+        # Créer le message de notification dans le canal avec les utilisateurs notifiés
+        if notified_users:
+            users_mentions = " ".join(f"<@{user_id}>" for user_id in notified_users)
+            await interaction.followup.send(f"{users_mentions}, {interaction.user.mention} propose en échange des cartes interessantes !")
+
     except Exception as e:
         logging.error("La commande /trade_cards a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
@@ -552,6 +546,87 @@ async def delete_profile(interaction: discord.Interaction):
             await interaction.response.send_message("Votre profil utilisateur n'existe pas.", ephemeral=True)
     except Exception as e:
         logging.error("La commande /delete_profile a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
+
+@tree.command(guild=discord.Object(id=SERVER_ID), name='rate_user', description='Permet d\'évaluer un utilisateur')
+async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Member, rating: int, comment: str = "", cards_sent: str = ""):
+    try:
+        logging.info("La commande /rate_user a été exécutée.")
+        
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+        
+        evaluator_id = str(interaction.user.id)
+        evaluator_username = interaction.user.name
+        
+        evaluated_user_id = str(evaluated_user.id)
+        evaluated_username = evaluated_user.name
+        
+        # Vérifier si l'utilisateur évalué existe, sinon le créer
+        if evaluated_user_id not in users:
+            get_or_create_user(users, evaluated_user_id, evaluated_username)
+        
+        # Vérifier si l'utilisateur évaluant existe, sinon le créer
+        if evaluator_id not in users:
+            get_or_create_user(users, evaluator_id, evaluator_username)
+        
+        evaluated_user = users[evaluated_user_id]
+               
+        # Créer l'évaluation
+        evaluation = Evaluation(evaluator_username, rating, comment, cards_sent.split(",") if cards_sent else [])
+        
+        # Ajouter l'évaluation à l'utilisateur évalué
+        evaluated_user.add_evaluation(evaluation)
+        
+        # Enregistrer les utilisateurs dans le fichier JSON
+        save_users(users)
+
+        # Envoyer un message privé à l'utilisateur évalué pour confirmation
+        confirmation_message = f"L'utilisateur {evaluator_username} vous a évalué."
+        await direct_message(evaluated_user_id, confirmation_message)    
+        
+        await interaction.response.send_message(f"Vous avez évalué l'utilisateur {evaluated_username} avec une note de {rating}.", ephemeral=True)
+        
+    except Exception as e:
+        logging.error("La commande /rate_user a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
+@tree.command(guild=discord.Object(id=SERVER_ID), name='show_evaluations', description='Affiche les évaluations d\'un utilisateur')
+async def show_evaluations(interaction: discord.Interaction, username: discord.Member):
+    try:
+        logging.info("La commande /show_evaluations a été exécutée.")
+
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+
+        user_id = str(username.id)
+        user = users.get(user_id)
+
+        for user_data in users.values():
+            if user_data.username == username:
+                user = user_data
+                break
+
+        if user is None:
+            await interaction.response.send_message(f"L'utilisateur '{username}' n'a pas d'évaluations.", ephemeral=True)
+            return
+
+        evaluations = user.evaluations
+        if not evaluations:
+            await interaction.response.send_message(f"L'utilisateur '{username}' n'a pas d'évaluations.", ephemeral=True)
+            return
+
+        embed = discord.Embed(title=f"Évaluations de l'utilisateur {username}", color=discord.Color.green())
+
+        for evaluation in evaluations:
+            #cards_info = [f"Cartes échangées : {card.card_number} {card.name}" for card in evaluation.cards_sent]
+            #print(cards_info)
+            #embed.add_field(name=f"Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}"+ "\n".join(cards_info), inline=False)
+            embed.add_field(name=f"Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}", inline=False)
+
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    except Exception as e:
+        logging.error("La commande /show_evaluations a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
 
 
