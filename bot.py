@@ -617,17 +617,44 @@ async def show_evaluations(interaction: discord.Interaction, username: discord.M
 
         embed = discord.Embed(title=f"Évaluations de l'utilisateur {username}", color=discord.Color.green())
 
-        for evaluation in evaluations:
+        for idx, evaluation in enumerate(evaluations):
             #cards_info = [f"Cartes échangées : {card.card_number} {card.name}" for card in evaluation.cards_sent]
             #print(cards_info)
             #embed.add_field(name=f"Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}"+ "\n".join(cards_info), inline=False)
-            embed.add_field(name=f"Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}", inline=False)
+            embed.add_field(name=f"#{idx} Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}", inline=False)
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
     except Exception as e:
         logging.error("La commande /show_evaluations a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
+
+@tree.command(guild=discord.Object(id=SERVER_ID), name='remove_rate_user', description='ADMIN - Supprimer une évaluation un utilisateur')
+@commands.has_any_role(1085684130425077851, 1085684015014613083)#//Id des rôles modo et admin
+async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Member, id_eval: int):
+    try:
+        logging.info("La commande /remove_rate_user a été exécutée.")
+        
+        users = load_users()  # Charger les utilisateurs à partir du fichier JSON
+        
+        evaluated_user_id = str(evaluated_user.id)
+        evaluated_username = evaluated_user.name
+        
+        evaluated_user = users[evaluated_user_id]
+
+        # Supprime l'évaluation à l'utilisateur
+        evaluated_user.remove_evaluation(evaluated_user.evaluations[id_eval])
+        
+        # Enregistrer les utilisateurs dans le fichier JSON
+        save_users(users)
+        
+        await interaction.response.send_message(f"Vous avez supprimé une évalutaion de {evaluated_username}", ephemeral=True)
+        
+    except Exception as e:
+        logging.error("La commande /remove_rate_user a échoué :", exc_info=True)
+        await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
+
 
 
 # Connecte le bot au serveur

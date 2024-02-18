@@ -57,6 +57,9 @@ class User:
     def add_evaluation(self, evaluation):
         self.evaluations.append(evaluation)
 
+    def remove_evaluation(self, evaluation):
+        self.evaluations.remove(evaluation)
+
     
 class Evaluation:
     def __init__(self, evaluator_username, rating, comment=None, cards_sent=None):
