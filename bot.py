@@ -659,7 +659,7 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
         users = load_users()  # Charger les utilisateurs à partir du fichier JSON
         
         evaluated_user_id = str(evaluated_user.id)
-        evaluator_username = evaluated_user.name
+        evaluated_username = evaluated_user.name
         
         evaluated_user = users[evaluated_user_id]
 
@@ -669,7 +669,7 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
         # Enregistrer les utilisateurs dans le fichier JSON
         save_users(users)
         
-        await interaction.response.send_message(f"Vous avez supprimé une évalutaion de {evaluator_username}", ephemeral=True)
+        await interaction.response.send_message(f"Vous avez supprimé une évalutaion de {evaluated_username}", ephemeral=True)
     except IndexError as e:
         logging.error("La commande /remove_rate_user a échoué (IndexError) :", exc_info=True)
         await interaction.response.send_message("L'index spécifié est invalide.", ephemeral=True)
