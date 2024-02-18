@@ -659,7 +659,7 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
         users = load_users()  # Charger les utilisateurs à partir du fichier JSON
         
         evaluated_user_id = str(evaluated_user.id)
-        evaluator_username = interaction.user.name
+        evaluator_username = evaluated_user.name
         
         evaluated_user = users[evaluated_user_id]
 
