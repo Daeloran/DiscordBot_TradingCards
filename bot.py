@@ -2,6 +2,7 @@
 
 import discord
 from discord.ext import commands
+from discord.ext.commands import MissingAnyRole, NoPrivateMessage
 from discord import app_commands
 import logging
 import random
@@ -561,6 +562,11 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
         
         evaluated_user_id = str(evaluated_user.id)
         evaluated_username = evaluated_user.name
+
+        if(evaluator_username == evaluated_username):
+            logging.error("La commande /rate_user a échoué (auto_eval) :", exc_info=True)
+            await interaction.response.send_message("Vous ne pouvez pas vous évaluer vous-même.", ephemeral=True)
+            return
         
         # Vérifier si l'utilisateur évalué existe, sinon le créer
         if evaluated_user_id not in users:
@@ -616,12 +622,17 @@ async def show_evaluations(interaction: discord.Interaction, username: discord.M
             return
 
         embed = discord.Embed(title=f"Évaluations de l'utilisateur {username}", color=discord.Color.green())
+        moyenne = 0
 
         for idx, evaluation in enumerate(evaluations):
             #cards_info = [f"Cartes échangées : {card.card_number} {card.name}" for card in evaluation.cards_sent]
             #print(cards_info)
             #embed.add_field(name=f"Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}"+ "\n".join(cards_info), inline=False)
             embed.add_field(name=f"#{idx} Évaluateur : {evaluation.evaluator_username}", value=f"Note : {evaluation.rating}/5\nCommentaire : {evaluation.comment}", inline=False)
+            moyenne += evaluation.rating
+
+        moyenne = moyenne / len(evaluations)
+        embed.add_field(name="Moyenne : ", value=f"{round(moyenne,2)}/5", inline=True)
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
@@ -631,15 +642,24 @@ async def show_evaluations(interaction: discord.Interaction, username: discord.M
 
 
 @tree.command(guild=discord.Object(id=SERVER_ID), name='remove_rate_user', description='ADMIN - Supprimer une évaluation un utilisateur')
-@commands.has_any_role(1085684130425077851, 1085684015014613083)#//Id des rôles modo et admin
 async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Member, id_eval: int):
     try:
         logging.info("La commande /remove_rate_user a été exécutée.")
+
+        can_execute = False
+        for role in interaction.user.roles:
+            #1085684130425077851 Modo
+            #1085684015014613083 Admin
+            if role.id == 1085684130425077851 or role.id == 1085684015014613083: # check les roles modo et admin
+                can_execute = True
+                break
+        if not can_execute:
+            raise MissingAnyRole("Permission manquante")
         
         users = load_users()  # Charger les utilisateurs à partir du fichier JSON
         
         evaluated_user_id = str(evaluated_user.id)
-        evaluated_username = evaluated_user.name
+        evaluator_username = interaction.user.name
         
         evaluated_user = users[evaluated_user_id]
 
@@ -649,8 +669,13 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
         # Enregistrer les utilisateurs dans le fichier JSON
         save_users(users)
         
-        await interaction.response.send_message(f"Vous avez supprimé une évalutaion de {evaluated_username}", ephemeral=True)
-        
+        await interaction.response.send_message(f"Vous avez supprimé une évalutaion de {evaluator_username}", ephemeral=True)
+    except IndexError as e:
+        logging.error("La commande /remove_rate_user a échoué (IndexError) :", exc_info=True)
+        await interaction.response.send_message("L'index spécifié est invalide.", ephemeral=True)
+    except MissingAnyRole as e:
+        logging.error("La commande /remove_rate_user a échoué (permission) :", exc_info=True)
+        await interaction.response.send_message("Vous n'avez pas la permission d'effectuer cette commande.", ephemeral=True)
     except Exception as e:
         logging.error("La commande /remove_rate_user a échoué :", exc_info=True)
         await interaction.response.send_message("Une erreur est survenue lors de l'exécution de la commande.", ephemeral=True)
