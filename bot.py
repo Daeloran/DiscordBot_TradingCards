@@ -593,7 +593,7 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
 
         # Envoi un message global pour confirmer l'évaluation
         channel = client.get_channel(RATE_CHANNEL_ID)
-        await channel.send(trade_message_in_rate_channel(evaluation))
+        await channel.send(trade_message_in_rate_channel(evaluation, evaluated_user.username))
         
         await interaction.response.send_message(f"Vous avez évalué l'utilisateur {evaluated_username} avec une note de {rating}.", ephemeral=True)
         
