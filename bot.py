@@ -10,7 +10,7 @@ import random
 from classes import Evaluation
 from cards import available_cards
 from functions import *
-from config import COMMAND_PREFIX, SERVER_ID, TOKEN
+from config import COMMAND_PREFIX, SERVER_ID, TOKEN, RATE_CHANNEL_ID
 
 
 # Configuration de la journalisation vers un fichier
@@ -589,7 +589,11 @@ async def rate_user(interaction: discord.Interaction, evaluated_user: discord.Me
 
         # Envoyer un message privé à l'utilisateur évalué pour confirmation
         confirmation_message = f"L'utilisateur {evaluator_username} vous a évalué."
-        await direct_message(evaluated_user_id, confirmation_message)    
+        await direct_message(evaluated_user_id, confirmation_message)
+
+        # Envoi un message global pour confirmer l'évaluation
+        channel = client.get_channel(RATE_CHANNEL_ID)
+        await channel.send(trade_message_in_rate_channel(evaluation))
         
         await interaction.response.send_message(f"Vous avez évalué l'utilisateur {evaluated_username} avec une note de {rating}.", ephemeral=True)
         
