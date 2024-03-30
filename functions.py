@@ -177,3 +177,12 @@ async def notifications(cards_info, interaction_user, notification_type):
     return notified_users
 
 
+"""
+=== Fonctions Messages ===
+"""
+def trade_message_in_rate_channel(evaluation):
+    message = f"**{evaluation.evaluator_username}** a évalué **{evaluation.evaluator_username}** avec une note de **{evaluation.rating}**"
+    if(evaluation.comment != None):
+        message += f" avec le commentaire suivant: **{evaluation.comment}**"
+    message += "."
+    return message
