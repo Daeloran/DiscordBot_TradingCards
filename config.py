@@ -4,10 +4,10 @@
 COMMAND_PREFIX = '/'
 
 # ID du serveur Discord
-SERVER_ID = 1122893178278785175
+SERVER_ID = 'your_discord_server'
 
 # Token du bot Discord
-TOKEN = 'MTEyMjg5MTU0OTk0NTExNDc3NA.GU0nXT.tvLNPo1oBWWtvcgtetjY7MWJVdWYx6x8d-d530'
+TOKEN = 'your_discord_bot_token'
 
 # ID du salon d'avis
-RATE_CHANNEL_ID = 1126571397754396853
+RATE_CHANNEL_ID = 'the_channel_used_for_rates'
